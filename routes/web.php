@@ -11,8 +11,10 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
-    Event::fire('thing.happened');
     return view('welcome');
 });
 
