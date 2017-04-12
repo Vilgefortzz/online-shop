@@ -11,13 +11,23 @@
 |
 */
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
-
 Route::get('/', function () {
-    return view('welcome');
+
+    $categories = \App\Category::all();
+    return view('main_page', compact('categories'));
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+/*
+ * User Routes
+ */
+Route::group(['prefix' => 'users'], function () {
+
+    Route::get('/', 'UserController@index');
+    Route::get('/{user}/cart', 'UserController@showItemsInCart');
+});
+
+Route::get('/categories/{category}/products', 'CategoryController@showAllProducts');
