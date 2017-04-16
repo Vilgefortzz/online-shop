@@ -14,7 +14,13 @@
 Route::get('/', function () {
 
     $categories = \App\Category::all();
-    return view('main_page', compact('categories'));
+
+    /*
+     * Recommended products - collection
+     */
+    $recommendedProducts = \App\Product::all()->where('recommended', true);
+
+    return view('main_page', compact('categories', 'recommendedProducts'));
 });
 
 Auth::routes();
@@ -30,4 +36,4 @@ Route::group(['prefix' => 'users'], function () {
     Route::get('/{user}/cart', 'UserController@showItemsInCart');
 });
 
-Route::get('/categories/{category}/products', 'CategoryController@showAllProducts');
+Route::get('/subcategories/{subcategory}/products', 'CategoryController@showAllProducts');

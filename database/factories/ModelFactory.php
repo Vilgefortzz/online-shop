@@ -22,3 +22,40 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Cart::class, function (Faker\Generator $faker) {
+
+    return [];
+});
+
+$factory->define(App\Category::class, function (Faker\Generator $faker) {
+
+    return [
+        'name' => $faker->unique()->word
+    ];
+});
+
+$factory->define(App\Subcategory::class, function (Faker\Generator $faker) {
+
+    return [
+        'category_id' => rand(1, 5),
+        'name' => $faker->unique()->word
+    ];
+});
+
+$factory->define(App\Product::class, function (Faker\Generator $faker) {
+
+    return [
+        'subcategory_id' => rand(1, 7),
+        'name' => $faker->unique()->word,
+        'description' => $faker->text,
+        'price' => $faker->randomFloat(2, 150, 900)
+    ];
+});
+
+$factory->define(App\Item::class, function (Faker\Generator $faker) {
+
+    return [
+        'product_id' => rand(1, 20)
+    ];
+});

@@ -4,6 +4,9 @@
 // Variables
 @import "variables";
 
+// Focus and dim screen on hover
+@import "focus_and_dim";
+
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
@@ -42,4 +45,38 @@ body{
 .panel {
   border: none;
   box-shadow: none;
+}
+
+.horizontal_menu{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.dropdown{
+  display: inline-block;
+}
+
+.dropdown a{
+  display: block;
+  color: #59585b;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.horizontal_menu > li a:hover{
+  color: #29282b;
+}
+
+.horizontal_line{
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border: 1px solid #373639;
+}
+
+.dropdown-menu li a{
+  display: block;
+  text-align: center;
 }

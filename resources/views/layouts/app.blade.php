@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    {{-- Set icon image --}}
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -25,10 +28,9 @@
 
 </head>
 <body>
-    <div id="app">
-        @include('layouts.nav_bar')
-        @yield('content')
-    </div>
+
+    @include('layouts.nav_bar')
+    @yield('content')
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
