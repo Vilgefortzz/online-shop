@@ -11236,6 +11236,14 @@ var app = new Vue({
   el: '#app'
 });
 
+/**
+ * Load my scripts
+ */
+
+__webpack_require__(51);
+__webpack_require__(50);
+__webpack_require__(52);
+
 /***/ }),
 /* 11 */
 /***/ (function(module, exports) {
@@ -41118,6 +41126,56 @@ module.exports = function(module) {
 __webpack_require__(10);
 module.exports = __webpack_require__(11);
 
+
+/***/ }),
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {$('.expose').hover(function (e) {
+    $(this).css('z-index', '99999');
+    $('#overlay').fadeIn(400);
+});
+
+$('#overlay').hover(function (e) {
+    $('#overlay').fadeOut(400, function () {
+        $('.expose').css('z-index', '1');
+    });
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {$('.dropdown').hover(function () {
+    $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn();
+}, function () {
+    $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut();
+});
+
+$('.dropdown-menu').hover(function () {
+    $(this).stop(true, true);
+}, function () {
+    $(this).stop(true, true).delay(200).fadeOut();
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {$('.alert').delay(7000).fadeOut('slow');
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ })
 /******/ ]);

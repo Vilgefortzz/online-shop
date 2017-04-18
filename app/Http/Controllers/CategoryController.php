@@ -7,11 +7,5 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function showAllProducts(Category $category){
 
-        $products = $category->products;
-
-        return view('category_products', compact('category', 'products'));
-
-    }
 }

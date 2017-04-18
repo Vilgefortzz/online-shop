@@ -34,6 +34,15 @@ Route::group(['prefix' => 'users'], function () {
 
     Route::get('/', 'UserController@index');
     Route::get('/{user}/cart', 'UserController@showItemsInCart');
+    Route::get('/{user}/settings', 'UserController@showSettings');
+
+    /*
+     * Settings panel
+     */
+    Route::put('/{user}/update/name', 'UserController@updateName');
+    Route::put('/{user}/update/password', 'UserController@updatePassword');
+    Route::put('/{user}/update/email', 'UserController@updateEmail');
+    Route::delete('/{user}/delete', 'UserController@delete');
 });
 
-Route::get('/subcategories/{subcategory}/products', 'CategoryController@showAllProducts');
+Route::get('/subcategories/{subcategory}/products', 'SubcategoryController@showAllProducts');

@@ -18,3 +18,11 @@ Vue.component('example', require('./components/Example.vue'));
 const app = new Vue({
     el: '#app'
 });
+
+/**
+ * Load my scripts
+ */
+
+require('./hover_menu');
+require('./focus_and_dim');
+require('./hide_flash_messages');

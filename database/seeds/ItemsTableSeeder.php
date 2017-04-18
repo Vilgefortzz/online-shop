@@ -15,7 +15,7 @@ class ItemsTableSeeder extends Seeder
     {
         $products = Product::all();
         foreach ($products as $product){
-            factory(Item::class, 7)->create([
+            factory(Item::class, 2)->create([
                 'product_id' => $product->id
             ]);
         }

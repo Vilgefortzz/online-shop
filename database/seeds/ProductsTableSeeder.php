@@ -15,8 +15,15 @@ class ProductsTableSeeder extends Seeder
     {
         $subcategories = Subcategory::all();
         foreach ($subcategories as $subcategory) {
-            factory(Product::class, 4)->create([
+            factory(Product::class, 3)->create([
                 'subcategory_id' => $subcategory->id
+            ]);
+        }
+
+        foreach ($subcategories as $subcategory) {
+            factory(Product::class, 1)->create([
+                'subcategory_id' => $subcategory->id,
+                'recommended' => true
             ]);
         }
     }

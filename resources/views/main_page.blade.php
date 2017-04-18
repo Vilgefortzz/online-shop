@@ -35,7 +35,7 @@
         </ul>
 
         {{--Horizontal line--}}
-        <div class="horizontal_line" style="margin-bottom: 10px"></div>
+        <div class="horizontal_line"></div>
 
     </div>
 
@@ -60,39 +60,9 @@
         </div>
     </div>
 
-    <div class="container">
-        {{--Horizontal line--}}
-        <div class="horizontal_line" style="margin-top: 10px"></div>
-
-        {{--Recommended(section)--}}
-
-        @foreach($recommendedProducts as $recommendedProduct)
-            <div class="row">
-
-                <div class="panel">
-
-                    <div class="panel-heading text-center">
-                        <h2 style="margin-top: 0">{{$recommendedProduct->name}}</h2>
-                    </div>
-
-                    <div class="panel-body">
-                        <img src="/images/{{$recommendedProduct->image}}" width="100" height="100" style="margin-bottom: 10px">
-                        <h3>{{$recommendedProduct->description}}</h3>
-                    </div>
-
-                </div>
-
-            </div>
-
-            {{$recommendedProduct->name}}
-        @endforeach
-    </div>
+    {{--List of all recommended products--}}
+    @include('layouts.recommended_products_list')
 
     <div id="overlay"></div>
-
-    {{-- Script with menu hover --}}
-    <script src="{{ asset('js/hover_menu.js') }}"></script>
-    {{-- Script with dim screen on hover and focus--}}
-    <script src="{{ asset('js/focus_and_dim.js') }}"></script>
 
 @endsection

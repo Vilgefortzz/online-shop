@@ -48,7 +48,7 @@ $factory->define(App\Product::class, function (Faker\Generator $faker) {
     return [
         'subcategory_id' => rand(1, 7),
         'name' => $faker->unique()->word,
-        'description' => $faker->text,
+        'description' => $faker->text(50),
         'price' => $faker->randomFloat(2, 150, 900)
     ];
 });

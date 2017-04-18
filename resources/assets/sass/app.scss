@@ -7,6 +7,9 @@
 // Focus and dim screen on hover
 @import "focus_and_dim";
 
+// Recommended products list
+@import "recommended_products_list";
+
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
@@ -16,11 +19,16 @@ body{
 
 .brandFont{
   font-family: 'Lobster', cursive;
-  font-size: 15px;
+  font-size: 25px;
 }
 
 .container-fix{
   margin-top: 100px;
+}
+
+.thumbnail{
+  border: none;
+  background-color: white;
 }
 
 .jumbotron{
@@ -74,9 +82,46 @@ body{
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border: 1px solid #373639;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .dropdown-menu li a{
   display: block;
+  text-align: left;
+}
+
+.bigger_header{
+  font-size: 65px;
+}
+
+.lead{
+  color: #690314;
+  font-size: 25px;
+}
+
+.nav.nav-center {
+  display: inline-block;
+  float:none;
+}
+
+.btn-danger{
+  background-color: darkred;
+}
+
+// Modal window to delete
+
+.modal.loading .modal-content:before {
+  content: 'Loading...';
   text-align: center;
+  line-height: 155px;
+  font-size: 20px;
+  background: rgba(0, 0, 0, .8);
+  position: absolute;
+  top: 55px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #EEE;
+  z-index: 1000;
 }
