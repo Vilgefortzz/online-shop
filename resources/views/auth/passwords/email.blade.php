@@ -4,7 +4,7 @@
 <div class="container container-fix">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <div class="panel">
+            <div class="panel_without_border">
                 <div class="panel-heading text-center">
                     <h2 style="margin-top: 0">Reset Password</h2>
                 </div>

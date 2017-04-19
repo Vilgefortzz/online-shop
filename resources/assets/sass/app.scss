@@ -8,7 +8,10 @@
 @import "focus_and_dim";
 
 // Recommended products list
-@import "recommended_products_list";
+@import "products_list";
+
+// Categories side bar menu
+@import "categories_nav_bar";
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
@@ -50,7 +53,7 @@ body{
   box-shadow: none;
 }
 
-.panel {
+.panel_without_border {
   border: none;
   box-shadow: none;
 }
@@ -95,9 +98,28 @@ body{
   font-size: 65px;
 }
 
-.lead{
+.lead_main{
   color: #690314;
   font-size: 25px;
+}
+
+.lead_sub{
+  color: #690314;
+  font-size: 20px;
+}
+
+.group_div{
+
+}
+
+.add_to_cart{
+  color: #136739;
+  font-size: 15px;
+}
+
+.give_review{
+  color: #7f7c17;
+  font-size: 15px;
 }
 
 .nav.nav-center {
@@ -124,4 +146,15 @@ body{
   right: 0;
   color: #EEE;
   z-index: 1000;
+}
+
+// Button separator
+
+.btn-separator:after {
+  content: ' ';
+  display: inline-block;
+  background: #ADADAD;
+  margin: 0 10px;
+  height: 15px;
+  width: 1px;
 }

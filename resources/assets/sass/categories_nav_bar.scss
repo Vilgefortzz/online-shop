@@ -1,0 +1,24 @@
+.glyphicon { margin-right:10px; }
+.panel-body { padding:0; }
+.panel-body table tr td { padding-left: 15px }
+.panel-body .table {margin-bottom: 0; }
+
+#accordion{
+  position: fixed;
+}
+
+#accordion a{
+  text-decoration: none;
+  color: #4c4c4c;
+}
+
+#accordion a:hover{
+  text-decoration: none;
+  color: #0d0d0d;
+}
+
+#accordion tr td{
+  border-radius: 80px;
+  text-decoration: none;
+  border: none;
+}

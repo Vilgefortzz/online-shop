@@ -2,35 +2,95 @@
 
 @section('content')
     <div class="container container-fix">
+        <div class="well well-sm">
+            <strong>Category: {{$category->name}} | Subcategory: {{$subcategory->name}}</strong>
+            <div class="btn-group">
+                <a id="list" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-th-list"></span>List
+                </a>
+                <a id="grid" class="btn btn-default btn-sm active">
+                    <span class="glyphicon glyphicon-th"></span>Grid
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading text-center">
-                        All products in subcategory: {{$subcategory->name}}
-                    </div>
+            <div class="col-sm-3 col-md-2">
+                <div class="panel-group" id="accordion">
+                    @foreach($categories as $category)
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$category->id}}">
+                                    <span class="glyphicon glyphicon-menu-right"></span>{{$category->name}}
+                                </a>
+                            </h4>
+                        </div>
 
-                    <div class="panel-body">
-                        <div class="list-group">
-
-                            @foreach($products as $product)
-
-                                    <h2>
-                                        {{$product->name}}
-                                    </h2>
-
-                                    <img src="/images/{{$product->image}}">
-
-                                    <br><br>
-                                    <h4>Description: </h4>
-                                    {{$product->description}}
-
-                                    <h4>Price: </h4>
-                                    <div style="color: darkred">{{$product->price}}$</div>
-
-                            @endforeach
+                        <div id="collapse{{$category->id}}" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <table class="table">
+                                    @foreach($category->subcategories as $subcategory)
+                                    <tr>
+                                        <td class="text-center">
+                                            <a href="{{ url('/subcategories/'.$subcategory->id.'/products') }}">{{$subcategory->name}}</a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </table>
+                            </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
+            </div>
+
+                <div class="col-sm-10 col-md-10">
+
+                {{--List of products from subcategory--}}
+
+                    <div id="products" class="row list-group">
+
+                        @foreach($products as $product)
+
+                            <div class="item col-xs-4 col-lg-4">
+                                <div class="thumbnail">
+                                    <img class="group list-group-image" src="/images/{{$product->image}}" width="200" height="200"/>
+                                    <div class="caption">
+                                        <h2 class="group inner list-group-item-heading">
+                                            <b>
+                                                {{$product->name}}
+                                                <a href="#" style="font-size: 18px">
+                                                    <span class="glyphicon glyphicon-triangle-right"></span>See details
+                                                </a>
+                                            </b>
+                                        </h2>
+
+                                        <div class="row" style="margin-top: 50px">
+                                            <div class="col-xs-12 col-md-4 group_div">
+                                                <p><b>Buy now:</b></p>
+                                                <p class="lead_sub"><b>${{$product->price}}</b></p>
+                                            </div>
+                                            <div class="col-xs-12 col-md-6 group_div">
+                                                <a class="add_to_cart" href="#">
+                                                    <span class="glyphicon glyphicon-shopping-cart"></span><b>Add to cart</b>
+                                                </a>
+                                                {{--For autheniticated users--}}
+                                                @if(Auth::check())
+                                                    <span class="btn-separator" hidden></span>
+                                                    <a class="give_review" href="#">
+                                                        <span class="glyphicon glyphicon-comment"></span><b>Give a review</b>
+                                                    </a>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
             </div>
         </div>
     </div>

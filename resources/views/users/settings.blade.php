@@ -10,7 +10,7 @@
                 <div class="horizontal_line"></div>
 
                 {{--Change name--}}
-                <div class="panel panel-default">
+                <div class="panel panel_without_border panel-default">
                     <div class="panel-heading text-center">
                         <h4 style="margin-top: 0">Change your name</h4>
                     </div>
@@ -48,7 +48,7 @@
                 <div class="horizontal_line"></div>
 
                 {{--Change password--}}
-                <div class="panel panel-default">
+                <div class="panel panel_without_border panel-default">
                     <div class="panel-heading text-center">
                         <h4 style="margin-top: 0">Change password</h4>
                     </div>
@@ -96,7 +96,7 @@
                 <div class="horizontal_line"></div>
 
                 {{--Change email--}}
-                <div class="panel panel-default">
+                <div class="panel panel_without_border panel-default">
                     <div class="panel-heading text-center">
                         <h4 style="margin-top: 0">Change e-mail address</h4>
                     </div>

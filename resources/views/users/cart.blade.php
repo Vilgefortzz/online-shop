@@ -4,7 +4,7 @@
     <div class="container container-fix">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
+                <div class="panel_without_border panel-default">
                     <div class="panel-heading text-center">
                         <h2 style="margin-top: 0">Your items in cart:</h2>
                     </div>

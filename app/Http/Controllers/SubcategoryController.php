@@ -10,8 +10,10 @@ class SubcategoryController extends Controller
 {
     public function showAllProducts(Subcategory $subcategory){
 
+        $categories = Category::all();
+        $category = $subcategory->category;
         $products = $subcategory->products;
 
-        return view('subcategories.subcategory_products', compact('subcategory','products'));
+        return view('subcategories.subcategory_products', compact('categories','category','subcategory','products'));
     }
 }
