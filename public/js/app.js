@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "./";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 42);
+/******/ 	return __webpack_require__(__webpack_require__.s = 47);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -11222,7 +11222,7 @@ module.exports = g;
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(31);
+__webpack_require__(34);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -11230,7 +11230,7 @@ __webpack_require__(31);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', __webpack_require__(37));
+Vue.component('example', __webpack_require__(42));
 
 var app = new Vue({
   el: '#app'
@@ -11240,11 +11240,10 @@ var app = new Vue({
  * Load my scripts
  */
 
-__webpack_require__(34);
-__webpack_require__(32);
+__webpack_require__(39);
+__webpack_require__(38);
+__webpack_require__(31);
 __webpack_require__(33);
-__webpack_require__(51);
-__webpack_require__(53);
 
 /***/ }),
 /* 11 */
@@ -12126,8 +12125,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
+/* WEBPACK VAR INJECTION */(function($) {var url = window.location;
 
-window._ = __webpack_require__(36);
+$('td a').filter(function () {
+    return this.href == url;
+}).parent().addClass('active').css('backgroundColor', '#b4b37a');
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 32 */,
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+window._ = __webpack_require__(41);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -12137,7 +12159,7 @@ window._ = __webpack_require__(36);
 
 window.$ = window.jQuery = __webpack_require__(1);
 
-__webpack_require__(35);
+__webpack_require__(40);
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
@@ -12145,7 +12167,7 @@ __webpack_require__(35);
  * and simple, leaving you to focus on building your next great project.
  */
 
-window.Vue = __webpack_require__(40);
+window.Vue = __webpack_require__(45);
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -12174,30 +12196,17 @@ window.axios.defaults.headers.common = {
 // });
 
 /***/ }),
-/* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function($) {$('.expose').hover(function (e) {
-    $(this).css('z-index', '99999');
-    $('#overlay').fadeIn(400);
-});
-
-$('#overlay').hover(function (e) {
-    $('#overlay').fadeOut(400, function () {
-        $('.expose').css('z-index', '1');
-    });
-});
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 33 */
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {$('.alert').delay(7000).fadeOut('slow');
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 34 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {$('.dropdown').hover(function () {
@@ -12214,7 +12223,7 @@ $('.dropdown-menu').hover(function () {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 35 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {/*!
@@ -14598,7 +14607,7 @@ if (typeof jQuery === 'undefined') {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 36 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -31687,17 +31696,17 @@ if (typeof jQuery === 'undefined') {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(41)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(46)(module)))
 
 /***/ }),
-/* 37 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(38)(
+var Component = __webpack_require__(43)(
   /* script */
   __webpack_require__(30),
   /* template */
-  __webpack_require__(39),
+  __webpack_require__(44),
   /* scopeId */
   null,
   /* cssModules */
@@ -31724,7 +31733,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 38 */
+/* 43 */
 /***/ (function(module, exports) {
 
 module.exports = function normalizeComponent (
@@ -31777,7 +31786,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 39 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -31806,7 +31815,7 @@ if (false) {
 }
 
 /***/ }),
-/* 40 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41134,7 +41143,7 @@ module.exports = Vue$3;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(9)))
 
 /***/ }),
-/* 41 */
+/* 46 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -41162,47 +41171,12 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 42 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(10);
 module.exports = __webpack_require__(11);
 
-
-/***/ }),
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function($) {$(document).ready(function () {
-    $('#list').click(function (event) {
-        event.preventDefault();$('.btn-separator').show();$('.group_div').removeClass('col-xs-12');$('#list').addClass('active');$('#grid').removeClass('active');$('#products .item').addClass('list-group-item');
-    });
-    $('#grid').click(function (event) {
-        event.preventDefault();$('.btn-separator').hide();$('.group_div').addClass('col-xs-12');$('#grid').addClass('active');$('#list').removeClass('active');$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');
-    });
-});
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 52 */,
-/* 53 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function($) {var url = window.location;
-
-// Will also work for relative and absolute hrefs
-$('td a').filter(function () {
-    return this.href == url;
-}).parent().addClass('active').css('backgroundColor', '#b4b37a');
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ })
 /******/ ]);

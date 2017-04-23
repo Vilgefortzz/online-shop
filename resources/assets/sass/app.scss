@@ -117,6 +117,11 @@ body{
   font-size: 15px;
 }
 
+.remove_from_cart{
+  color: darkred;
+  font-size: 13px;
+}
+
 .give_review{
   color: #7f7c17;
   font-size: 15px;
@@ -157,4 +162,12 @@ body{
   margin: 0 10px;
   height: 15px;
   width: 1px;
+}
+
+// Total price to pay
+
+#totalPrice{
+  color: white;
+  background-color: darkkhaki;
+  border-radius: 80px;
 }

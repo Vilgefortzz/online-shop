@@ -13,18 +13,71 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
+
+        $productsToSwords = ['miecz jednoręczny - dekoracyjny', 'miecz jednoręczny - dekoracyjny2', 'miecz jednoręczny - dekoracyjny3',
+            'miecz jednoręczny - dekoracyjny4', 'miecz jednoręczny - dekoracyjny5', 'miecz jednoręczny - dekoracyjny6', 'miecz jednoręczny - szczerbiec'];
+        $productsToAxes = ['axe'];
+        $productsToShields = ['legion shield'];
+        $productsToHelmets = ['helmet'];
+
+        $swordsImages = ['/images/swords/1.jpg', '/images/swords/2.JPG', '/images/swords/3.JPG',
+            '/images/swords/4.jpg', '/images/swords/5.JPG', '/images/swords/6.jpg', '/images/swords/7.jpg'];
+
+        $axesImages = ['/images/axes/axe.JPG'];
+        $shieldsImages = ['/images/shields/legion_shield.jpg'];
+        $helmetsImages = ['/images/helmets/helmet.jpg'];
+
         $subcategories = Subcategory::all();
-        foreach ($subcategories as $subcategory) {
-            factory(Product::class, 3)->create([
-                'subcategory_id' => $subcategory->id
+
+        $subcategorySwords = $subcategories->where('name', 'swords')->first();
+        $subcategoryAxes = $subcategories->where('name', 'axes')->first();
+        $subcategoryShields = $subcategories->where('name', 'shields')->first();
+        $subcategoryHelmets = $subcategories->where('name', 'helmets')->first();
+
+        for ($i = 0; $i < count($productsToSwords); $i++) {
+            factory(Product::class)->create([
+                'subcategory_id' => $subcategorySwords->id,
+                'name' => $productsToSwords[$i],
+                'image' => $swordsImages[$i]
             ]);
         }
 
-        foreach ($subcategories as $subcategory) {
-            factory(Product::class, 1)->create([
-                'subcategory_id' => $subcategory->id,
-                'recommended' => true
+        for ($i = 0; $i < count($productsToAxes); $i++) {
+            factory(Product::class)->create([
+                'subcategory_id' => $subcategoryAxes->id,
+                'name' => $productsToAxes[$i],
+                'image' => $axesImages[$i]
             ]);
         }
+
+        for ($i = 0; $i < count($productsToShields); $i++) {
+            factory(Product::class)->create([
+                'subcategory_id' => $subcategoryShields->id,
+                'name' => $productsToShields[$i],
+                'image' => $shieldsImages[$i]
+            ]);
+        }
+
+        for ($i = 0; $i < count($productsToHelmets); $i++) {
+            factory(Product::class)->create([
+                'subcategory_id' => $subcategoryHelmets->id,
+                'name' => $productsToHelmets[$i],
+                'image' => $helmetsImages[$i]
+            ]);
+        }
+
+//        $subcategories = Subcategory::all();
+//        foreach ($subcategories as $subcategory) {
+//            factory(Product::class, 3)->create([
+//                'subcategory_id' => $subcategory->id
+//            ]);
+//        }
+
+//        foreach ($subcategories as $subcategory) {
+//            factory(Product::class, 1)->create([
+//                'subcategory_id' => $subcategory->id,
+//                'recommended' => true
+//            ]);
+//        }
     }
 }

@@ -27,11 +27,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function cart()
-    {
-        return $this->hasOne('App\Cart');
-    }
-
     public function orders()
     {
         return $this->hasMany('App\Order');

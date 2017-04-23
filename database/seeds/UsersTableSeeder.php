@@ -20,11 +20,8 @@ class UsersTableSeeder extends Seeder
             'email' => 'greghause123@gmail.com',
             'password' => bcrypt('witampana')
 
-        ])->cart()->save(factory(Cart::class)->make());
+        ]);
 
-        factory(User::class, 20)->create()
-            ->each(function ($user){
-                $user->cart()->save(factory(Cart::class)->make());
-            });
+        factory(User::class, 20)->create();
     }
 }

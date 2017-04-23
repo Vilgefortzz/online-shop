@@ -91,7 +91,7 @@
                                     <p class="lead_main"><b>${{$recommendedProduct->price}}</b></p>
                                 </div>
                                 <div class="col-xs-12 col-md-6">
-                                    <a class="btn btn-success" href="#">
+                                    <a id="{{$recommendedProduct->id}}" class="btn btn-success add_to_cart" href="{{ url('/cart/add/'.$recommendedProduct->id) }}">
                                         <span class="glyphicon glyphicon-shopping-cart"></span>Add to cart
                                     </a>
                                     {{--For autheniticated users--}}
@@ -110,5 +110,12 @@
     </div>
 
     <div id="overlay"></div>
+
+    <script src="{{ asset('js/focus_and_dim.js') }}"></script>
+
+    {{-- AJAX scripts--}}
+
+    <script src="{{ asset('js/add_to_cart_ajax.js') }}"></script>
+    <script src="{{ asset('js/delete_from_cart_ajax.js') }}"></script>
 
 @endsection

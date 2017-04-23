@@ -21,12 +21,6 @@ class UserController extends Controller
 
     }
 
-    public function showItemsInCart(User $user){
-
-        $items = $user->cart->items;
-        return view('users.cart', compact('items'));
-    }
-
     public function updateName(User $user, Request $request){
 
         /*

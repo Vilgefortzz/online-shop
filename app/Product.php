@@ -10,4 +10,9 @@ class Product extends Model
     {
         return $this->belongsTo('App\Subcategory');
     }
+
+    public function items()
+    {
+        return $this->hasMany('App\Item');
+    }
 }

@@ -40,25 +40,59 @@
                     @if(Session::has('removed_account'))
                         <div class="alert alert-danger text-center">{{ Session::get('removed_account') }}</div>
                     @endif
+
+                    {{--AJAX flash messages--}}
+                    <div id="added_to_cart" class="alert alert-success text-center" hidden>You have added new product to cart</div>
+                    <div id="removed_from_cart" class="alert alert-danger text-center" hidden>You have removed product from cart</div>
             </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
-                <!-- Authentication Links -->
+
+                <!-- Cart -->
+                <li class="dropdown">
+                    <a id="shopping_cart" href="{{ url('/cart') }}">
+                        <span class="glyphicon glyphicon-shopping-cart"></span>Shopping cart
+                        {{--Number of products--}}
+                        <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQuantity : '0' }}</span>
+                    </a>
+
+                    @if(Session::has('cart'))
+                        <ul id="cart_list" class="dropdown-menu" role="menu">
+                            @if(Session::get('cart')->totalQuantity == 0)
+                                <li>
+                                    <h5 class="text-center">Cart is empty</h5>
+                                </li>
+                            @else
+                                @foreach(Session::get('cart')->products as $product)
+                                    <li>
+                                        <a href="#">
+                                            <span class="glyphicon glyphicon-hand-right"></span>{{$product['product']['name']}}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            @endif
+                        </ul>
+                    @else
+
+                            <ul id="cart_list" class="dropdown-menu" role="menu">
+                                <li>
+                                    <h5 class="text-center">Cart is empty</h5>
+                                </li>
+                            </ul>
+                    @endif
+                </li>
+
                 @if (Auth::guest())
+
+                    <!-- Without Authentication Links -->
                     <li><a href="{{ route('login') }}">Login</a></li>
                     <li><a href="{{ route('register') }}">Register</a></li>
                 @else
 
-                <!-- Cart -->
-                    <li>
-                        <a href="{{ url('/users/'.Auth::user()->id.'/cart') }}">
-                            <span class="glyphicon glyphicon-shopping-cart"></span>
-                        </a>
-                    </li>
-
+                <!-- Authentication Links -->
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <a href="#">
                             <span class="glyphicon glyphicon-user"></span>{{ Auth::user()->name }}
                         </a>
 

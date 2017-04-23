@@ -57,12 +57,12 @@
 
                             <div class="item col-xs-4 col-lg-4">
                                 <div class="thumbnail">
-                                    <img class="group list-group-image" src="/images/{{$product->image}}" width="200" height="200"/>
+                                    <img class="group list-group-image" src="{{$product->image}}" width="200" height="200"/>
                                     <div class="caption">
                                         <h2 class="group inner list-group-item-heading">
                                             <b>
                                                 {{$product->name}}
-                                                <a href="#" style="font-size: 18px">
+                                                <a href="#" style="font-size: 12px">
                                                     <span class="glyphicon glyphicon-triangle-right"></span>See details
                                                 </a>
                                             </b>
@@ -74,14 +74,19 @@
                                                 <p class="lead_sub"><b>${{$product->price}}</b></p>
                                             </div>
                                             <div class="col-xs-12 col-md-6 group_div">
-                                                <a class="add_to_cart" href="#">
-                                                    <span class="glyphicon glyphicon-shopping-cart"></span><b>Add to cart</b>
+                                                <a id="{{$product->id}}" class="add_to_cart" href="{{ url('/cart/add/'.$product->id) }}">
+                                                    <div id="add_to_cart_btn{{$product->id}}">
+                                                        <span class="glyphicon glyphicon-shopping-cart"></span><b>Add to cart</b>
+                                                    </div>
                                                 </a>
+
                                                 {{--For autheniticated users--}}
                                                 @if(Auth::check())
                                                     <span class="btn-separator" hidden></span>
                                                     <a class="give_review" href="#">
-                                                        <span class="glyphicon glyphicon-comment"></span><b>Give a review</b>
+                                                        <div id="give_review_btn">
+                                                            <span class="glyphicon glyphicon-comment"></span><b>Give a review</b>
+                                                        </div>
                                                     </a>
                                                 @endif
                                             </div>
@@ -94,4 +99,13 @@
             </div>
         </div>
     </div>
+
+    {{-- AJAX Scripts--}}
+
+    <script src="{{ asset('js/add_to_cart_ajax.js') }}"></script>
+    <script src="{{ asset('js/delete_from_cart_ajax.js') }}"></script>
+
+    {{-- Change view (grid, list)--}}
+    <script src="{{ asset('js/change_view.js') }}"></script>
+
 @endsection

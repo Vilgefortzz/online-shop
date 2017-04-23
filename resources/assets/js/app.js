@@ -24,7 +24,6 @@ const app = new Vue({
  */
 
 require('./hover_menu');
-require('./focus_and_dim');
 require('./hide_flash_messages');
-require('./change_view');
 require('./active_links');
+require('./ajax_config');

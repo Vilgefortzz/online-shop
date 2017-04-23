@@ -23,11 +23,6 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Cart::class, function (Faker\Generator $faker) {
-
-    return [];
-});
-
 $factory->define(App\Category::class, function (Faker\Generator $faker) {
 
     return [
@@ -50,12 +45,5 @@ $factory->define(App\Product::class, function (Faker\Generator $faker) {
         'name' => $faker->unique()->word,
         'description' => $faker->text(50),
         'price' => $faker->randomFloat(2, 150, 900)
-    ];
-});
-
-$factory->define(App\Item::class, function (Faker\Generator $faker) {
-
-    return [
-        'product_id' => rand(1, 20)
     ];
 });

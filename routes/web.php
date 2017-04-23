@@ -27,13 +27,18 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+/**
+ * Cart - Session
+ */
+
+Route::get('/cart', 'CartController@showProducts');
+
 /*
  * User Routes
  */
 Route::group(['prefix' => 'users'], function () {
 
     Route::get('/', 'UserController@index');
-    Route::get('/{user}/cart', 'UserController@showItemsInCart');
     Route::get('/{user}/settings', 'UserController@showSettings');
 
     /*
@@ -46,3 +51,6 @@ Route::group(['prefix' => 'users'], function () {
 });
 
 Route::get('/subcategories/{subcategory}/products', 'SubcategoryController@showAllProducts');
+
+Route::post('/cart/add/{product}', 'CartController@addProduct');
+Route::delete('/cart/delete/{product}', 'CartController@deleteProduct');
