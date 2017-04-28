@@ -26,24 +26,24 @@
             <ul class="nav nav-center">
 
                 @if(Session::has('changed_name'))
-                    <div class="alert alert-success text-center">{{ Session::get('changed_name') }}</div>
+                    <div class="alert alert-success flash-message text-center">{{ Session::get('changed_name') }}</div>
                 @endif
 
                 @if(Session::has('changed_password'))
-                    <div class="alert alert-success text-center">{{ Session::get('changed_password') }}</div>
+                    <div class="alert alert-success flash-message text-center">{{ Session::get('changed_password') }}</div>
                 @endif
 
                     @if(Session::has('changed_email'))
-                        <div class="alert alert-success text-center">{{ Session::get('changed_email') }}</div>
+                        <div class="alert alert-success flash-message text-center">{{ Session::get('changed_email') }}</div>
                     @endif
 
                     @if(Session::has('removed_account'))
-                        <div class="alert alert-danger text-center">{{ Session::get('removed_account') }}</div>
+                        <div class="alert alert-danger flash-message text-center">{{ Session::get('removed_account') }}</div>
                     @endif
 
                     {{--AJAX flash messages--}}
-                    <div id="added_to_cart" class="alert alert-success text-center" hidden>You have added new product to cart</div>
-                    <div id="removed_from_cart" class="alert alert-danger text-center" hidden>You have removed product from cart</div>
+                    <div id="added_to_cart" class="alert alert-success flash-message" hidden>Added new product</div>
+                    <div id="removed_from_cart" class="alert alert-danger flash-message" hidden>Removed product</div>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -52,9 +52,9 @@
                 <!-- Cart -->
                 <li class="dropdown">
                     <a id="shopping_cart" href="{{ url('/cart') }}">
-                        <span class="glyphicon glyphicon-shopping-cart"></span>Shopping cart
+                        <span class="glyphicon glyphicon-shopping-cart glyphicon-fix"></span>
                         {{--Number of products--}}
-                        <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQuantity : '0' }}</span>
+                        <span class="badge cart_counter">{{ Session::has('cart') ? Session::get('cart')->totalQuantity : '0' }}</span>
                     </a>
 
                     @if(Session::has('cart'))

@@ -74,15 +74,21 @@
                                                 <p class="lead_sub"><b>${{$product->price}}</b></p>
                                             </div>
                                             <div class="col-xs-12 col-md-6 group_div">
-                                                <a id="{{$product->id}}" class="add_to_cart" href="{{ url('/cart/add/'.$product->id) }}">
+                                                <a id="add_{{$product->id}}" class="add_to_cart" href="{{ url('/cart/add/'.$product->id) }}">
                                                     <div id="add_to_cart_btn{{$product->id}}">
                                                         <span class="glyphicon glyphicon-shopping-cart"></span><b>Add to cart</b>
                                                     </div>
                                                 </a>
 
+                                                {{-- Hidden link - dynamically change--}}
+                                                <a id="remove_{{$product->id}}" class="remove_from_cart" href="{{ url('/cart/delete/'.$product->id) }}" hidden>
+                                                    <div id="remove_from_cart_btn{{$product->id}}">
+                                                        <span class="glyphicon glyphicon-remove"></span><b>Remove</b>
+                                                    </div>
+                                                </a>
+
                                                 {{--For autheniticated users--}}
                                                 @if(Auth::check())
-                                                    <span class="btn-separator" hidden></span>
                                                     <a class="give_review" href="#">
                                                         <div id="give_review_btn">
                                                             <span class="glyphicon glyphicon-comment"></span><b>Give a review</b>
@@ -103,7 +109,7 @@
     {{-- AJAX Scripts--}}
 
     <script src="{{ asset('js/add_to_cart_ajax.js') }}"></script>
-    <script src="{{ asset('js/delete_from_cart_ajax.js') }}"></script>
+    <script src="{{ asset('js/delete_from_cart_view_products_ajax.js') }}"></script>
 
     {{-- Change view (grid, list)--}}
     <script src="{{ asset('js/change_view.js') }}"></script>

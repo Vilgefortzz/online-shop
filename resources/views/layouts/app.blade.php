@@ -29,6 +29,8 @@
 </head>
 <body>
 
+    <input type="hidden" id="is_session" value="{{Session::has('cart') ? 1 : 0}}">
+
     @include('layouts.nav_bar')
     @yield('content')
 

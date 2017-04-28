@@ -116,6 +116,6 @@
     {{-- AJAX scripts--}}
 
     <script src="{{ asset('js/add_to_cart_ajax.js') }}"></script>
-    <script src="{{ asset('js/delete_from_cart_ajax.js') }}"></script>
+    <script src="{{ asset('deldelete_from_cart_view_products_ajax.jscts_ajax.js') }}"></script>
 
 @endsection

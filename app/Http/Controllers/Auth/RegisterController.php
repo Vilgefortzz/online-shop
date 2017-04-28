@@ -73,16 +73,6 @@ class RegisterController extends Controller
         $user->password = bcrypt($data['password']);
         $user->save();
 
-        /*
-         * Create cart for new user
-         */
-        $cart = new Cart();
-
-        /*
-         * Add this cart to newly created user
-         */
-        $user->cart()->save($cart);
-
         return $user;
     }
 }

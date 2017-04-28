@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
+use Session;
 
 class UserController extends Controller
 {
@@ -75,9 +76,10 @@ class UserController extends Controller
     public function delete(User $user){
 
         /*
-         * Very important - logout before delete
+         * Very important - logout before delete and remove items from session
          */
         Auth::logout();
+        Session::flush();
 
         $user->delete();
 

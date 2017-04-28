@@ -113,18 +113,33 @@ body{
 }
 
 .add_to_cart{
-  color: #136739;
+  color: #148551;
   font-size: 15px;
+}
+
+.add_to_cart:hover{
+  text-decoration: none;
+  color: #123216;
 }
 
 .remove_from_cart{
-  color: darkred;
-  font-size: 13px;
+  color: #af0000;
+  font-size: 15px;
+}
+
+.remove_from_cart:hover{
+  text-decoration: none;
+  color: #360000;
 }
 
 .give_review{
-  color: #7f7c17;
+  color: #9c991a;
   font-size: 15px;
+}
+
+.give_review:hover{
+  text-decoration: none;
+  color: #3c3911;
 }
 
 .nav.nav-center {
@@ -153,14 +168,14 @@ body{
   z-index: 1000;
 }
 
-// Button separator
+// Button separator - products_list
 
-.btn-separator:after {
+.btn-separator-products:after {
   content: ' ';
   display: inline-block;
   background: #ADADAD;
-  margin: 0 10px;
-  height: 15px;
+  margin: 0 8px;
+  height: 13px;
   width: 1px;
 }
 
@@ -170,4 +185,57 @@ body{
   color: white;
   background-color: darkkhaki;
   border-radius: 80px;
+}
+
+// Items in cart - counter
+
+.cart_counter{
+  font-size: 14px;
+  background: #ff965d;
+  color: #181c1f;
+  padding: 0 5px;
+  vertical-align: top;
+  border-radius: 80%;
+}
+
+// Make cart close to badge with counter
+
+.glyphicon-fix {
+  margin-right: -2px;
+}
+
+// Flash messages appearance
+
+.flash-message{
+  padding: 2px 2px 2px 2px;
+  margin-top: 14px;
+  margin-bottom: 6px;
+}
+
+.glyphicon-trash:hover{
+  color: darkred;
+}
+
+.trash-remove{
+  color: black;
+  text-decoration: none;
+}
+
+.trash-remove:hover{
+  color: darkred;
+  text-decoration: none;
+}
+
+.trash-remove:active{
+  color: darkred;
+  text-decoration: none;
+}
+
+.trash-remove:link{
+  color: black;
+  text-decoration: none;
+}
+
+.trash-remove:focus{
+  color: black;
 }

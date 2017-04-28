@@ -27,3 +27,27 @@ require('./hover_menu');
 require('./hide_flash_messages');
 require('./active_links');
 require('./ajax_config');
+
+/**
+ * Active tooltip - show etc.
+ */
+$('[data-toggle="tooltip"]').tooltip();
+
+$(document).ready(function() {
+
+    if ($('#is_session').val() == ('1')){
+        if (localStorage.length > 0){
+            for (var i = 0; i < localStorage.length; i++){
+
+                var id = localStorage.getItem(localStorage.key(i));
+                $('#add_' + id).hide();
+                $('#remove_' + id).show();
+            }
+        }
+        else
+            localStorage.clear();
+    }
+    else {
+        localStorage.clear();
+    }
+});

@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "./";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 47);
+/******/ 	return __webpack_require__(__webpack_require__.s = 43);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -11215,14 +11215,14 @@ module.exports = g;
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
+/* WEBPACK VAR INJECTION */(function($) {
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(34);
+__webpack_require__(33);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -11230,20 +11230,42 @@ __webpack_require__(34);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', __webpack_require__(42));
+Vue.component('example', __webpack_require__(38));
 
 var app = new Vue({
-  el: '#app'
+    el: '#app'
 });
 
 /**
  * Load my scripts
  */
 
-__webpack_require__(39);
-__webpack_require__(38);
+__webpack_require__(35);
+__webpack_require__(34);
 __webpack_require__(31);
-__webpack_require__(33);
+__webpack_require__(32);
+
+/**
+ * Active tooltip - show etc.
+ */
+$('[data-toggle="tooltip"]').tooltip();
+
+$(document).ready(function () {
+
+    if ($('#is_session').val() == '1') {
+        if (localStorage.length > 0) {
+            for (var i = 0; i < localStorage.length; i++) {
+
+                var id = localStorage.getItem(localStorage.key(i));
+                $('#add_' + id).hide();
+                $('#remove_' + id).show();
+            }
+        } else localStorage.clear();
+    } else {
+        localStorage.clear();
+    }
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 11 */
@@ -12133,8 +12155,7 @@ $('td a').filter(function () {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 32 */,
-/* 33 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {$.ajaxSetup({
@@ -12145,11 +12166,11 @@ $('td a').filter(function () {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-window._ = __webpack_require__(41);
+window._ = __webpack_require__(37);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -12159,7 +12180,7 @@ window._ = __webpack_require__(41);
 
 window.$ = window.jQuery = __webpack_require__(1);
 
-__webpack_require__(40);
+__webpack_require__(36);
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
@@ -12167,7 +12188,7 @@ __webpack_require__(40);
  * and simple, leaving you to focus on building your next great project.
  */
 
-window.Vue = __webpack_require__(45);
+window.Vue = __webpack_require__(41);
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -12196,17 +12217,14 @@ window.axios.defaults.headers.common = {
 // });
 
 /***/ }),
-/* 35 */,
-/* 36 */,
-/* 37 */,
-/* 38 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {$('.alert').delay(7000).fadeOut('slow');
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 39 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {$('.dropdown').hover(function () {
@@ -12223,7 +12241,7 @@ $('.dropdown-menu').hover(function () {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 40 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {/*!
@@ -14607,7 +14625,7 @@ if (typeof jQuery === 'undefined') {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 41 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -31696,17 +31714,17 @@ if (typeof jQuery === 'undefined') {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(46)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(42)(module)))
 
 /***/ }),
-/* 42 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(43)(
+var Component = __webpack_require__(39)(
   /* script */
   __webpack_require__(30),
   /* template */
-  __webpack_require__(44),
+  __webpack_require__(40),
   /* scopeId */
   null,
   /* cssModules */
@@ -31733,7 +31751,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 43 */
+/* 39 */
 /***/ (function(module, exports) {
 
 module.exports = function normalizeComponent (
@@ -31786,7 +31804,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 44 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -31815,7 +31833,7 @@ if (false) {
 }
 
 /***/ }),
-/* 45 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41143,7 +41161,7 @@ module.exports = Vue$3;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(9)))
 
 /***/ }),
-/* 46 */
+/* 42 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -41171,7 +41189,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 47 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(10);
