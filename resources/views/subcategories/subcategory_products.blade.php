@@ -62,7 +62,7 @@
                                         <h2 class="group inner list-group-item-heading">
                                             <b>
                                                 {{$product->name}}
-                                                <a href="#" style="font-size: 12px">
+                                                <a href="{{ url('/products/'.$product->id) }}" style="font-size: 12px">
                                                     <span class="glyphicon glyphicon-triangle-right"></span>See details
                                                 </a>
                                             </b>
@@ -71,7 +71,7 @@
                                         <div class="row" style="margin-top: 50px">
                                             <div class="col-xs-12 col-md-4 group_div">
                                                 <p><b>Buy now:</b></p>
-                                                <p class="lead_sub"><b>${{$product->price}}</b></p>
+                                                <p class="lead_sub"><b>{{$product->price}}$</b></p>
                                             </div>
                                             <div class="col-xs-12 col-md-6 group_div">
                                                 <a id="add_{{$product->id}}" class="add_to_cart" href="{{ url('/cart/add/'.$product->id) }}">
@@ -89,7 +89,7 @@
 
                                                 {{--For autheniticated users--}}
                                                 @if(Auth::check())
-                                                    <a class="give_review" href="#">
+                                                    <a class="give_review" href="{{ url('/products/'.$product->id) }}">
                                                         <div id="give_review_btn">
                                                             <span class="glyphicon glyphicon-comment"></span><b>Give a review</b>
                                                         </div>

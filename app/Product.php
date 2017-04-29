@@ -11,6 +11,11 @@ class Product extends Model
         return $this->belongsTo('App\Subcategory');
     }
 
+    public function reviews()
+    {
+        return $this->hasMany('App\Review');
+    }
+
     public function items()
     {
         return $this->hasMany('App\Item');

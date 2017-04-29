@@ -11264,6 +11264,54 @@ $(document).ready(function () {
     } else {
         localStorage.clear();
     }
+
+    var orig_height = $('#review_text_area').height();
+    var new_height = 150;
+
+    $('#review_text_area').on('focus', function () {
+
+        $(this).animate({ height: new_height + 'px' });
+    });
+
+    $('#review_text_area').on('blur', function () {
+
+        $(this).animate({ height: orig_height + 'px' });
+    });
+
+    $('#give_review_this_page').on('click', function () {
+        if ($('#write_review').length != 0) {
+            $('html, body').animate({
+                scrollTop: $('#write_review').offset().top - 170
+            }, 800);
+
+            $('#review_text_area').focus();
+        } else {
+            $('html, body').animate({
+                scrollTop: $('#review_given').offset().top - 170
+            }, 800);
+        }
+    });
+
+    $('.give_review').on('click', function () {
+
+        sessionStorage.setItem('hash', 'write_review');
+    });
+
+    if (sessionStorage.length > 0) {
+        if ($('#write_review').length != 0) {
+            $('html, body').animate({
+                scrollTop: $('#write_review').offset().top - 170
+            }, 800);
+
+            $('#review_text_area').focus();
+        } else {
+            $('html, body').animate({
+                scrollTop: $('#review_given').offset().top - 170
+            }, 800);
+        }
+
+        sessionStorage.clear();
+    }
 });
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 

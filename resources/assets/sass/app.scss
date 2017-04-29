@@ -239,3 +239,67 @@ body{
 .trash-remove:focus{
   color: black;
 }
+
+// Text area to write reviews
+
+.textarea_review{
+  border: 2px solid black;
+  border-radius: 8px;
+  width: 70%;
+  height: 45px;
+}
+
+.textarea_review:focus{
+  outline:none;
+}
+
+.vertical-space{
+  margin-top: 50px;
+}
+
+// Reviews formatting
+
+.panel-review {
+  position:relative;
+  border-color: black;
+}
+
+.thumbnail-user{
+  margin-top: 4px;
+}
+
+.panel-heading{
+  font-size: 14px;
+  border: none;
+}
+
+.panel > .panel-heading-review:after, .panel > .panel-heading-review:before{
+  position:absolute;
+  top:11px;left:-16px;
+  right:100%;
+  width:0;
+  height:0;
+  display:block;
+  content:" ";
+  border-color:transparent;
+  border-style:solid solid outset;
+  pointer-events:none;
+}
+
+.panel >.panel-heading-review:after{
+  border-width:7px;
+  border-right-color: white;
+  margin-top:1px;
+  margin-left:2px;
+}
+
+.panel>.panel-heading-review:before{
+  border-right-color: black;
+  border-width:8px;
+}
+
+#review_given{
+  font-size: 30px;
+  color: #780014;
+  background-color: white;
+}

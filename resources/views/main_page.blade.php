@@ -79,7 +79,7 @@
                             <h2 class="group inner list-group-item-heading">
                                 <b>
                                     {{$recommendedProduct->name}}
-                                    <a href="#" style="font-size: 18px">
+                                    <a href="{{ url('/products/'.$recommendedProduct->id) }}" style="font-size: 18px">
                                         <span class="glyphicon glyphicon-triangle-right"></span>See details
                                     </a>
                                 </b>
@@ -88,16 +88,23 @@
                             <div class="row" style="margin-top: 50px">
                                 <div class="col-xs-12 col-md-4">
                                     <p><b>Buy now:</b></p>
-                                    <p class="lead_main"><b>${{$recommendedProduct->price}}</b></p>
+                                    <p class="lead_main"><b>{{$recommendedProduct->price}}$</b></p>
                                 </div>
                                 <div class="col-xs-12 col-md-6">
-                                    <a id="{{$recommendedProduct->id}}" class="btn btn-success add_to_cart" href="{{ url('/cart/add/'.$recommendedProduct->id) }}">
-                                        <span class="glyphicon glyphicon-shopping-cart"></span>Add to cart
+                                    <a id="add_{{$recommendedProduct->id}}" class="add_to_cart" href="{{ url('/cart/add/'.$recommendedProduct->id) }}">
+                                        <span class="glyphicon glyphicon-shopping-cart"></span><b>Add to cart</b>
                                     </a>
+
+                                    {{-- Hidden link - dynamically change--}}
+                                    <a id="remove_{{$recommendedProduct->id}}" class="remove_from_cart" href="{{ url('/cart/delete/'.$recommendedProduct->id) }}" hidden>
+                                        <span class="glyphicon glyphicon-remove"></span><b>Remove</b>
+                                    </a>
+
                                     {{--For autheniticated users--}}
                                     @if(Auth::check())
-                                        <a class="btn btn-warning" href="#" style="margin-top: 3px">
-                                            <span class="glyphicon glyphicon-comment"></span>Give a review
+                                        <br>
+                                        <a class="give_review" href="{{ url('/products/'.$recommendedProduct->id) }}">
+                                            <span class="glyphicon glyphicon-comment"></span><b>Give a review</b>
                                         </a>
                                     @endif
                                 </div>
@@ -116,6 +123,6 @@
     {{-- AJAX scripts--}}
 
     <script src="{{ asset('js/add_to_cart_ajax.js') }}"></script>
-    <script src="{{ asset('deldelete_from_cart_view_products_ajax.jscts_ajax.js') }}"></script>
+    <script src="{{ asset('js/delete_from_cart_view_products_ajax.js') }}"></script>
 
 @endsection

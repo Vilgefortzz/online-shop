@@ -50,7 +50,17 @@ Route::group(['prefix' => 'users'], function () {
     Route::delete('/{user}/delete', 'UserController@delete');
 });
 
+/*
+ * Products Routes
+ */
+Route::group(['prefix' => 'products'], function () {
+
+    Route::get('/{product}', 'ProductController@show');
+});
+
 Route::get('/subcategories/{subcategory}/products', 'SubcategoryController@showAllProducts');
 
 Route::post('/cart/add/{product}', 'CartController@addProduct');
 Route::delete('/cart/delete/{product}', 'CartController@deleteProduct');
+
+Route::post('/products/{product}/reviews/add', 'ReviewController@store');
