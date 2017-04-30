@@ -243,14 +243,16 @@ body{
 // Text area to write reviews
 
 .textarea_review{
-  border: 2px solid black;
-  border-radius: 8px;
-  width: 70%;
-  height: 45px;
-}
+  border: none;
+  overflow: auto;
+  outline: none;
+  resize: none;
 
-.textarea_review:focus{
-  outline:none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  width: 100%;
+  height: 45px;
 }
 
 .vertical-space{
@@ -302,4 +304,21 @@ body{
   font-size: 30px;
   color: #780014;
   background-color: white;
+}
+
+.info{
+  color: darkred;
+  font-size: 10px;
+}
+
+// Pagination
+
+.pagination-centered {
+  text-align: center;
+}
+
+.pagination > li >a, .pagination>li>span {
+  border: none;
+  border-radius: 50%;
+  margin: 0 5px;
 }

@@ -76,21 +76,39 @@
                     @if(Auth::check())
                         @if(!$isGiven)
                             <div id="write_review">
-                                <form role="form" method="POST" action="{{ url('/products/'.$product->id.'/reviews/add')}}">
-                                    {{ csrf_field() }}
-
-                                    <div class="form-group{{ $errors->has('review') ? ' has-error' : '' }}" style="margin-bottom: 0">
-                                        <label for="review_text_area"><span class="glyphicon glyphicon-pencil"></span>Write your review below:</label>
-                                        <br>
-                                        <textarea id="review_text_area" name="review" class="textarea_review" placeholder="Write here!!" required></textarea>
-                                        @if ($errors->has('review'))
-                                            <span class="help-block">
-                                        <strong>{{ $errors->first('review') }}</strong>
-                                    </span>
-                                        @endif
+                                <div class="row">
+                                    <div class="col-sm-1">
+                                        <div class="thumbnail">
+                                            <b><i>You</i></b>
+                                        </div>
                                     </div>
-                                    <button class="btn btn-info" type="submit">Post</button>
-                                </form>
+
+                                    <div class="col-sm-5">
+                                        <div class="panel panel-review panel-default">
+                                            <div class="panel-heading panel-heading-review">
+                                                <label for="review_text_area"><span class="glyphicon glyphicon-pencil"></span>Write your review below</label>
+                                                <br>
+                                                <u><b class="info">Please write truth to help others make a good purchase</b></u>
+                                            </div>
+                                            <div class="panel-body">
+                                                <form role="form" method="POST" action="{{ url('/products/'.$product->id.'/reviews/add')}}">
+                                                    {{ csrf_field() }}
+
+                                                    <div class="form-group{{ $errors->has('review') ? ' has-error' : '' }}" style="margin-bottom: 0">
+                                                        <br>
+                                                        <textarea id="review_text_area" name="review" class="textarea_review" placeholder="Write here!!" required></textarea>
+                                                        @if ($errors->has('review'))
+                                                            <span class="help-block">
+                                                                <strong>{{ $errors->first('review') }}</strong>
+                                                            </span>
+                                                        @endif
+                                                    </div>
+                                                    <button class="btn btn-info" type="submit">Post</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         @else
                             <div id="review_given">
@@ -108,7 +126,7 @@
                     @foreach($reviews as $review)
                         <div class="row">
                             <div class="col-sm-2">
-                                <div class="thumbnail thumbnail-user">
+                                <div class="thumbnail">
                                     <i>{{$review->user->name}}</i>
                                 </div>
                             </div>
