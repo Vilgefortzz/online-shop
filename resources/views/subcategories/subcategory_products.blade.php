@@ -62,7 +62,7 @@
 
     <script src="{{ asset('js/add_to_cart_ajax.js') }}"></script>
     <script src="{{ asset('js/delete_from_cart_view_products_ajax.js') }}"></script>
-    <script src="{{ asset('js/pagination_ajax.js') }}"></script>
+    <script src="{{ asset('js/pagination_products_ajax.js') }}"></script>
 
     {{-- Change view (grid, list)--}}
     <script src="{{ asset('js/change_view.js') }}"></script>

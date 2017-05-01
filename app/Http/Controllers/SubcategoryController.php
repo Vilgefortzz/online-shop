@@ -13,7 +13,7 @@ class SubcategoryController extends Controller
 
         $categories = Category::all();
         $category = $subcategory->category;
-        $products = Product::where('subcategory_id', $subcategory->id)->paginate(30);
+        $products = Product::where('subcategory_id', $subcategory->id)->paginate(3);
 
         if ($request->ajax()) {
             return view('products.products_list', compact('products'))->render();

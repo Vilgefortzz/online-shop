@@ -55,7 +55,7 @@ Route::group(['prefix' => 'users'], function () {
  */
 Route::group(['prefix' => 'products'], function () {
 
-    Route::get('/{product}', 'ProductController@show');
+    Route::get('/{product}', 'ProductController@showReviews');
 });
 
 Route::get('/subcategories/{subcategory}/products', 'SubcategoryController@showAllProducts');

@@ -2,6 +2,8 @@
 
 @section('content')
 
+    <input type="hidden" name="start_from" id="start_from" value="1">
+
     <div class="container container-fix">
         <div class="row">
             <div class="col-md-10 col-lg-offset-1">
@@ -71,7 +73,7 @@
                 {{--Header!!--}}
                 <h1 class="text-center" style="margin-bottom: 50px"><span class="glyphicon glyphicon-comment"></span><b>Reviews</b></h1>
 
-                <div id="reviews">
+                <div id="reviews_section">
                     {{--Autheniticated users can give reviews--}}
                     @if(Auth::check())
                         @if(!$isGiven)
@@ -121,31 +123,15 @@
 
                     <hr>
 
-                    {{-- All reviews connected with this product--}}
+                    <div id="reviews">
 
-                    @foreach($reviews as $review)
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <div class="thumbnail">
-                                    <i>{{$review->user->name}}</i>
-                                </div>
-                            </div>
+                        {{--All reviews connected with this product--}}
+                        @include('reviews.reviews_list')
 
-                            <div class="col-sm-8">
-                                <div class="panel panel-review panel-default">
-                                    <div class="panel-heading panel-heading-review">
-                                        <span class="glyphicon glyphicon-time"></span><span class="text-muted"><u><b>{{$review->created_at->toDateString()}}</b></u></span>
-                                    </div>
-                                    <div class="panel-body">
-                                        {{$review->review}}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
+                    </div>
+
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -153,5 +139,22 @@
 
     <script src="{{ asset('js/add_to_cart_ajax.js') }}"></script>
     <script src="{{ asset('js/delete_from_cart_view_products_ajax.js') }}"></script>
+
+    {{-- jscroll --}}
+    <script src="{{ asset('js/jscroll/jquery.jscroll.min.js') }}"></script>
+
+    <script type="text/javascript">
+        $('ul.pagination').hide();
+
+        $('.infinite-scroll').jscroll({
+            autoTrigger: true,
+            padding: 0,
+            nextSelector: '.pagination li.active + li a',
+            contentSelector: 'div.infinite-scroll',
+            callback: function () {
+                $('ul.pagination').remove();
+            }
+        });
+    </script>
 
 @endsection

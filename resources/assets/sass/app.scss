@@ -317,8 +317,18 @@ body{
   text-align: center;
 }
 
-.pagination > li >a, .pagination>li>span {
+.pagination > li > a, .pagination > li > span {
   border: none;
   border-radius: 50%;
-  margin: 0 5px;
+  color: black;
+}
+
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover {
+  background-color: #b4b37a;
+  border-color: black;
 }

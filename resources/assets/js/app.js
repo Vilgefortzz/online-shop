@@ -65,6 +65,7 @@ $(document).ready(function() {
     });
 
     $('#give_review_this_page').on('click', function() {
+
         if($('#write_review').length != 0) {
             $('html, body').animate({
                 scrollTop: $('#write_review').offset().top - 170
@@ -85,6 +86,7 @@ $(document).ready(function() {
     });
 
     if (sessionStorage.length > 0){
+
         if($('#write_review').length != 0) {
             $('html, body').animate({
                 scrollTop: $('#write_review').offset().top - 170

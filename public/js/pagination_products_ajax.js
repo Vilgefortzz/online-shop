@@ -50,6 +50,13 @@ function getProducts(url) {
 
             // Add listeners
 
+            // Again to animate when redirect to page with details
+
+            $('.give_review').on('click', function () {
+
+                sessionStorage.setItem('hash', 'write_review');
+            });
+
             // Again to paginate
 
             $('.pagination a').on('click', function (e) {
@@ -64,7 +71,7 @@ function getProducts(url) {
             $('.add_to_cart').on('click', function (e) {
                 e.preventDefault();
 
-                var url = $(this).attr("href");
+                var url = $(this).attr('href');
 
                 $.ajax({
                     type: 'POST',
@@ -93,7 +100,7 @@ function getProducts(url) {
             $('.remove_from_cart').on('click', function (e) {
                 e.preventDefault();
 
-                var url = $(this).attr("href");
+                var url = $(this).attr('href');
 
                 $.ajax({
                     type: 'DELETE',

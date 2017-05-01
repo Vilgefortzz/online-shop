@@ -47,3 +47,12 @@ $factory->define(App\Product::class, function (Faker\Generator $faker) {
         'price' => $faker->randomFloat(2, 150, 900)
     ];
 });
+
+$factory->define(App\Review::class, function (Faker\Generator $faker) {
+
+    return [
+        'product_id' => 1,
+        'user_id' => rand(1, 10),
+        'review' => $faker->text(500),
+    ];
+});
