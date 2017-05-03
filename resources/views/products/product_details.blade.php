@@ -2,8 +2,6 @@
 
 @section('content')
 
-    <input type="hidden" name="start_from" id="start_from" value="1">
-
     <div class="container container-fix">
         <div class="row">
             <div class="col-md-10 col-lg-offset-1">
@@ -28,25 +26,47 @@
                                 <p class="lead_sub"><b>{{$product->price}}$</b></p>
                             </div>
                             <div class="col-md-6 group_div">
-                                <a id="add_{{$product->id}}" class="add_to_cart" href="{{ url('/cart/add/'.$product->id) }}">
-                                    <div id="add_to_cart_btn{{$product->id}}">
-                                        <span class="glyphicon glyphicon-shopping-cart"></span><b>Add to cart</b>
-                                    </div>
-                                </a>
+                                @if(Session::has('cart'))
 
-                                {{-- Hidden link - dynamically change--}}
-                                <a id="remove_{{$product->id}}" class="remove_from_cart" href="{{ url('/cart/delete/'.$product->id) }}" hidden>
-                                    <div id="remove_from_cart_btn{{$product->id}}">
+                                    @if(!array_key_exists($product->id, Session::get('cart')->products))
+
+                                        <a id="add_{{$product->id}}" class="add_to_cart" href="{{ url('/cart/add/'.$product->id) }}">
+                                            <span class="glyphicon glyphicon-shopping-cart"></span><b>Add to cart</b>
+                                        </a>
+
+                                        <a id="remove_{{$product->id}}" class="remove_from_cart" href="{{ url('/cart/delete/'.$product->id) }}" hidden>
+                                            <span class="glyphicon glyphicon-remove"></span><b>Remove</b>
+                                        </a>
+
+                                    @else
+
+                                        <a id="add_{{$product->id}}" class="add_to_cart" href="{{ url('/cart/add/'.$product->id) }}" hidden>
+                                            <span class="glyphicon glyphicon-shopping-cart"></span><b>Add to cart</b>
+                                        </a>
+
+                                        <a id="remove_{{$product->id}}" class="remove_from_cart" href="{{ url('/cart/delete/'.$product->id) }}">
+                                            <span class="glyphicon glyphicon-remove"></span><b>Remove</b>
+                                        </a>
+
+                                    @endif
+
+                                @else
+
+                                    <a id="add_{{$product->id}}" class="add_to_cart" href="{{ url('/cart/add/'.$product->id) }}">
+                                        <span class="glyphicon glyphicon-shopping-cart"></span><b>Add to cart</b>
+                                    </a>
+
+                                    <a id="remove_{{$product->id}}" class="remove_from_cart" href="{{ url('/cart/delete/'.$product->id) }}" hidden>
                                         <span class="glyphicon glyphicon-remove"></span><b>Remove</b>
-                                    </div>
-                                </a>
+                                    </a>
+
+                                @endif
 
                                 {{--For autheniticated users--}}
                                 @if(Auth::check())
+                                    <br>
                                     <a id="give_review_this_page" class="give_review" href="javascript:undefined">
-                                        <div id="give_review_btn">
-                                            <span class="glyphicon glyphicon-comment"></span><b>Give a review</b>
-                                        </div>
+                                        <span class="glyphicon glyphicon-comment"></span><b>Give a review</b>
                                     </a>
                                 @endif
                             </div>

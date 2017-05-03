@@ -24,29 +24,12 @@ function getProducts(url) {
             $('#looading').remove();
         },
         success: function(data){
+
             $('#products').html(data);
 
             // Set active class to grid when go to another page with ajax calls
             $('#grid').addClass('active');
             $('#list').removeClass('active');
-
-            // Attach localstorage - without page reload
-
-            if ($('#is_session').val() == ('1')){
-                if (localStorage.length > 0){
-                    for (var i = 0; i < localStorage.length; i++){
-
-                        var id = localStorage.getItem(localStorage.key(i));
-                        $('#add_' + id).hide();
-                        $('#remove_' + id).show();
-                    }
-                }
-                else
-                    localStorage.clear();
-            }
-            else {
-                localStorage.clear();
-            }
 
             // Add listeners
 
@@ -82,15 +65,13 @@ function getProducts(url) {
                         $('#added_to_cart').show();
                         $('#added_to_cart').delay(7000).fadeOut('slow');
 
-                        var $badge = $('.badge'),
-                            count = Number($badge.text());
+                        var badge = $('.badge'),
+                            count = Number(badge.text());
 
-                        $badge.text(count + 1);
+                        badge.text(count + 1);
 
                         $('#add_' + data.id).hide();
                         $('#remove_' + data.id).show();
-
-                        localStorage.setItem('product_' + data.id, data.id);
                     }
                 })
             });
@@ -111,15 +92,13 @@ function getProducts(url) {
                         $('#removed_from_cart').show();
                         $('#removed_from_cart').delay(7000).fadeOut('slow');
 
-                        var $badge = $('.badge'),
-                            count = Number($badge.text());
+                        var badge = $('.badge'),
+                            count = Number(badge.text());
 
-                        $badge.text(count - 1);
+                        badge.text(count - 1);
 
-                        $('#remove_' + data.id).hide();
-                        $('#add_' + data.id).show();
-
-                        localStorage.removeItem('product_' + data.id);
+                        $('#remove_' + data.product.id).hide();
+                        $('#add_' + data.product.id).show();
                     }
                 })
             });

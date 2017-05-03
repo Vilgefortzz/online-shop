@@ -3,7 +3,7 @@ $(document).ready(function() {
     $('.add_to_cart').on('click', function (e) {
         e.preventDefault();
 
-        var url = $(this).attr("href");
+        var url = $(this).attr('href');
 
         $.ajax({
             type: 'POST',
@@ -14,15 +14,13 @@ $(document).ready(function() {
                 $('#added_to_cart').show();
                 $('#added_to_cart').delay(7000).fadeOut('slow');
 
-                var $badge = $('.badge'),
-                    count = Number($badge.text());
+                var badge = $('.badge'),
+                    count = Number(badge.text());
 
-                $badge.text(count + 1);
+                badge.text(count + 1);
 
                 $('#add_' + data.id).hide();
                 $('#remove_' + data.id).show();
-
-                localStorage.setItem('product_' + data.id, data.id);
             }
         })
     });

@@ -3,7 +3,7 @@ $(document).ready(function() {
     $('.remove_from_cart').on('click', function (e) {
         e.preventDefault();
 
-        var url = $(this).attr("href");
+        var url = $(this).attr('href');
 
         $.ajax({
             type: 'DELETE',
@@ -14,15 +14,13 @@ $(document).ready(function() {
                 $('#removed_from_cart').show();
                 $('#removed_from_cart').delay(7000).fadeOut('slow');
 
-                var $badge = $('.badge'),
-                    count = Number($badge.text());
+                var badge = $('.badge'),
+                    count = Number(badge.text());
 
-                $badge.text(count - 1);
+                badge.text(count - 1);
 
-                $('#remove_' + data.id).hide();
-                $('#add_' + data.id).show();
-
-                localStorage.removeItem('product_' + data.id);
+                $('#remove_' + data.product.id).hide();
+                $('#add_' + data.product.id).show();
             }
         })
     });

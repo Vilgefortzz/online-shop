@@ -91,14 +91,41 @@
                                     <p class="lead_main"><b>{{$recommendedProduct->price}}$</b></p>
                                 </div>
                                 <div class="col-xs-12 col-md-6">
-                                    <a id="add_{{$recommendedProduct->id}}" class="add_to_cart" href="{{ url('/cart/add/'.$recommendedProduct->id) }}">
-                                        <span class="glyphicon glyphicon-shopping-cart"></span><b>Add to cart</b>
-                                    </a>
+                                    @if(Session::has('cart'))
 
-                                    {{-- Hidden link - dynamically change--}}
-                                    <a id="remove_{{$recommendedProduct->id}}" class="remove_from_cart" href="{{ url('/cart/delete/'.$recommendedProduct->id) }}" hidden>
-                                        <span class="glyphicon glyphicon-remove"></span><b>Remove</b>
-                                    </a>
+                                        @if(!array_key_exists($product->id, Session::get('cart')->products))
+
+                                            <a id="add_{{$product->id}}" class="add_to_cart" href="{{ url('/cart/add/'.$product->id) }}">
+                                                <span class="glyphicon glyphicon-shopping-cart"></span><b>Add to cart</b>
+                                            </a>
+
+                                            <a id="remove_{{$product->id}}" class="remove_from_cart" href="{{ url('/cart/delete/'.$product->id) }}" hidden>
+                                                <span class="glyphicon glyphicon-remove"></span><b>Remove</b>
+                                            </a>
+
+                                        @else
+
+                                            <a id="add_{{$product->id}}" class="add_to_cart" href="{{ url('/cart/add/'.$product->id) }}" hidden>
+                                                <span class="glyphicon glyphicon-shopping-cart"></span><b>Add to cart</b>
+                                            </a>
+
+                                            <a id="remove_{{$product->id}}" class="remove_from_cart" href="{{ url('/cart/delete/'.$product->id) }}">
+                                                <span class="glyphicon glyphicon-remove"></span><b>Remove</b>
+                                            </a>
+
+                                        @endif
+
+                                    @else
+
+                                        <a id="add_{{$product->id}}" class="add_to_cart" href="{{ url('/cart/add/'.$product->id) }}">
+                                            <span class="glyphicon glyphicon-shopping-cart"></span><b>Add to cart</b>
+                                        </a>
+
+                                        <a id="remove_{{$product->id}}" class="remove_from_cart" href="{{ url('/cart/delete/'.$product->id) }}" hidden>
+                                            <span class="glyphicon glyphicon-remove"></span><b>Remove</b>
+                                        </a>
+
+                                    @endif
 
                                     {{--For autheniticated users--}}
                                     @if(Auth::check())

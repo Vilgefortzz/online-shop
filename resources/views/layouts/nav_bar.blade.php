@@ -54,12 +54,12 @@
                     <a id="shopping_cart" href="{{ url('/cart') }}">
                         <span class="glyphicon glyphicon-shopping-cart glyphicon-fix"></span>
                         {{--Number of products--}}
-                        <span class="badge cart_counter">{{ Session::has('cart') ? Session::get('cart')->totalQuantity : '0' }}</span>
+                        <span class="badge cart_counter">{{ Session::has('cart') ? Session::get('cart')->numberOfProducts : '0' }}</span>
                     </a>
 
                     @if(Session::has('cart'))
                         <ul id="cart_list" class="dropdown-menu" role="menu">
-                            @if(Session::get('cart')->totalQuantity == 0)
+                            @if(Session::get('cart')->numberOfProducts == 0)
                                 <li>
                                     <h5 class="text-center">Cart is empty</h5>
                                 </li>

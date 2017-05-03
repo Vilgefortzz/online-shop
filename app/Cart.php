@@ -7,7 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Cart extends Model
 {
     public $products = array();
-    public $totalQuantity = 0;
+
+    /*
+     * Total quantity of products existed in cart
+     */
+    public $numberOfProducts = 0;
+
+    /*
+     * Total amount of money for all products and items
+     */
     public $totalPrice = 0;
 
     /**
@@ -17,14 +25,16 @@ class Cart extends Model
     {
         if ($oldCart){
             $this->products = $oldCart->products;
-            $this->totalQuantity = $oldCart->totalQuantity;
+            $this->numberOfProducts = $oldCart->numberOfProducts;
             $this->totalPrice = $oldCart->totalPrice;
         }
     }
 
-    public function addProduct($product){
+    public function addProduct(Product $product){
 
-        $storedProduct = ['id' => 0, 'quantity' => 0, 'price' => $product->price, 'product' => $product];
+        $storedProduct = ['id' => 0, 'quantity' => 1,
+            'priceForOneItem' => $product->price, 'priceForAllItems' => $product->price,
+            'onStock' => $product->quantity, 'product' => $product];
 
         /**
          * Only one user can add one product to cart. Later he will decide how many items choose
@@ -32,11 +42,11 @@ class Cart extends Model
         if ($this->products){
 
             if (!array_key_exists($product->id, $this->products)){
+
                 $storedProduct['id'] = $product->id;
-                $storedProduct['quantity']++;
-                $storedProduct['price'] = $product->price * $storedProduct['quantity'];
+                $storedProduct['priceForAllItems'] = $product->price * $storedProduct['quantity'];
                 $this->products[$product->id] = $storedProduct;
-                $this->totalQuantity++;
+                $this->numberOfProducts++;
                 $this->totalPrice += $product->price;
             }
         }
@@ -46,41 +56,70 @@ class Cart extends Model
              * Add first product to cart
              */
             $storedProduct['id'] = $product->id;
-            $storedProduct['quantity']++;
-            $storedProduct['price'] = $product->price * $storedProduct['quantity'];
+            $storedProduct['priceForAllItems'] = $product->price * $storedProduct['quantity'];
             $this->products[$product->id] = $storedProduct;
-            $this->totalQuantity++;
+            $this->numberOfProducts++;
             $this->totalPrice += $product->price;
         }
     }
 
-    public function deleteProduct($product){
+    public function deleteProduct(Product $product){
 
         if ($this->products){
 
             if (count($this->products) == 1){
                 if ($product->id == array_first($this->products)['id']){
+                    $this->numberOfProducts--;
+                    $this->totalPrice -= $this->products[$product->id]['priceForAllItems'];
                     unset($this->products[$product->id]);
-                    $this->totalQuantity--;
-                    $this->totalPrice -= $product->price;
                 }
             }
             else{
                 if (array_key_exists($product->id, $this->products)){
+                    $this->numberOfProducts--;
+                    $this->totalPrice -= $this->products[$product->id]['priceForAllItems'];
                     unset($this->products[$product->id]);
-                    $this->totalQuantity--;
-                    $this->totalPrice -= $product->price;
                 }
             }
         }
+
+        return $this->totalPrice;
     }
 
-    public function setProductsQuantity($products_id, $newQuantity){
+    public function deleteAllProducts(){
 
-        foreach ($products_id as $product_id){
-            if (array_key_exists($product_id, $this->products)){
-                $this->products[$product_id]['quantity'] = $newQuantity;
+        if ($this->products){
+            unset($this->products);
+            $this->numberOfProducts = 0;
+            $this->totalPrice = 0;
+        }
+    }
+
+    public function setQuantity(Product $product, int $newQuantityValue){
+
+        if ($this->products){
+
+            if (count($this->products) == 1){
+                if ($product->id == array_first($this->products)['id']){
+                    $this->products[$product->id]['quantity'] = $newQuantityValue;
+                    $this->products[$product->id]['priceForAllItems'] = $product->price * $newQuantityValue;
+                    $this->totalPrice = $this->products[$product->id]['priceForAllItems'];
+                }
+            }
+            else{
+                if (array_key_exists($product->id, $this->products)){
+                    $this->products[$product->id]['quantity'] = $newQuantityValue;
+                    $this->products[$product->id]['priceForAllItems'] = $product->price * $newQuantityValue;
+
+                    $this->totalPrice = 0;
+
+                    foreach ($this->products as $product){
+                        $this->totalPrice += $product['priceForAllItems'];
+                    }
+                }
             }
         }
+
+        return $this->totalPrice;
     }
 }

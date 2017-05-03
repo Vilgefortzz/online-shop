@@ -11252,19 +11252,6 @@ $('[data-toggle="tooltip"]').tooltip();
 
 $(document).ready(function () {
 
-    if ($('#is_session').val() == '1') {
-        if (localStorage.length > 0) {
-            for (var i = 0; i < localStorage.length; i++) {
-
-                var id = localStorage.getItem(localStorage.key(i));
-                $('#add_' + id).hide();
-                $('#remove_' + id).show();
-            }
-        } else localStorage.clear();
-    } else {
-        localStorage.clear();
-    }
-
     var orig_height = $('#review_text_area').height();
     var new_height = 150;
 

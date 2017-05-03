@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function showReviews(Product $product){
+    public function show(Product $product){
 
         // Get all reviews for this product and sort reviews by date from the newest one
         $reviews = Review::where('product_id', $product->id)->orderBy('created_at', 'desc')->paginate(2);
@@ -19,9 +19,9 @@ class ProductController extends Controller
 
             $isGiven = $reviews->contains('user_id', Auth::user()->id);
 
-            return view('product_details', compact('product', 'isGiven', 'reviews'));
+            return view('products.product_details', compact('product', 'isGiven', 'reviews'));
         }
 
-        return view('product_details', compact('product', 'reviews'));
+        return view('products.product_details', compact('product', 'reviews'));
     }
 }

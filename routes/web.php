@@ -25,20 +25,23 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
-
 /**
- * Cart - Session
+ * Cart - Session ( show, add, delete )
  */
 
-Route::get('/cart', 'CartController@showProducts');
+Route::get('/cart','CartController@showProducts');
+Route::post('/cart/add/{product}','CartController@addProduct');
+
+Route::delete('/cart/delete/products','CartController@deleteAllProducts');
+Route::delete('/cart/delete/{product}','CartController@deleteProduct');
+
+Route::post('/cart/products/{product}/quantity', 'CartController@setQuantity');
 
 /*
  * User Routes
  */
 Route::group(['prefix' => 'users'], function () {
 
-    Route::get('/', 'UserController@index');
     Route::get('/{user}/settings', 'UserController@showSettings');
 
     /*
@@ -55,12 +58,8 @@ Route::group(['prefix' => 'users'], function () {
  */
 Route::group(['prefix' => 'products'], function () {
 
-    Route::get('/{product}', 'ProductController@showReviews');
+    Route::get('/{product}', 'ProductController@show');
 });
 
 Route::get('/subcategories/{subcategory}/products', 'SubcategoryController@showAllProducts');
-
-Route::post('/cart/add/{product}', 'CartController@addProduct');
-Route::delete('/cart/delete/{product}', 'CartController@deleteProduct');
-
 Route::post('/products/{product}/reviews/add', 'ReviewController@store');

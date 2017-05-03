@@ -18,7 +18,7 @@ class CartController extends Controller
         }
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
-        return view('cart', ['products' => $cart->products, 'totalPrice' => $cart->totalPrice, 'totalQuantity' => $cart->totalQuantity]);
+        return view('cart', ['products' => $cart->products, 'totalPrice' => $cart->totalPrice, 'numberOfProducts' => $cart->numberOfProducts]);
 
     }
 
@@ -50,10 +50,46 @@ class CartController extends Controller
 
         $cart = new Cart($oldCart);
 
-        $cart->deleteProduct($product);
+        $newTotalPrice = $cart->deleteProduct($product);
 
         $request->session()->put('cart', $cart);
 
-        return response()->json($product);
+        return response()->json(array(
+            'newTotalPrice' => $newTotalPrice,
+            'product' => $product
+        ));
+    }
+
+    /*
+     * AJAX request
+     */
+    public function deleteAllProducts(Request $request) {
+
+        $oldCart = $request->session()->has('cart') ? $request->session()->get('cart') : null;
+
+        $cart = new Cart($oldCart);
+
+        $cart->deleteAllProducts();
+
+        $request->session()->put('cart', $cart);
+    }
+
+    /*
+     * AJAX request
+     */
+    public function setQuantity(Product $product, Request $request) {
+
+        $oldCart = $request->session()->has('cart') ? $request->session()->get('cart') : null;
+
+        $cart = new Cart($oldCart);
+
+        $newTotalPrice = $cart->setQuantity($product, $request->newQuantityValue);
+
+        $request->session()->put('cart', $cart);
+
+        return response()->json(array(
+            'newTotalPrice' => $newTotalPrice,
+            'product' => $product
+        ));
     }
 }

@@ -332,3 +332,60 @@ body{
   background-color: #b4b37a;
   border-color: black;
 }
+
+// Plus and minus buttons
+
+.add-item {
+  border-radius: 10%;
+  background: transparent;
+}
+
+.add-item:hover,
+.add-item:focus,
+.add-item:active {
+  color: #009a00;
+  border-color: #009a00;
+  outline:0 !important;
+  background: transparent;
+}
+
+.delete-item {
+  border-radius: 10%;
+  background: transparent;
+}
+
+.delete-item:hover,
+.delete-item:focus,
+.delete-item:active {
+  color: #a6000a;
+  border-color: #a6000a;
+  outline:0 !important;
+  background: transparent;
+}
+
+.set-quantity{
+}
+
+.remove_all{
+  color: black;
+  text-decoration: none;
+}
+
+.remove_all:hover{
+  color: darkred;
+  text-decoration: none;
+}
+
+.remove_all:active{
+  color: darkred;
+  text-decoration: none;
+}
+
+.remove_all:link{
+  text-decoration: none;
+}
+
+.remove_all:focus{
+  color: black;
+  text-decoration: none;
+}
