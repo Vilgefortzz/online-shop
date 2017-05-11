@@ -1,0 +1,63 @@
+footer { background-color: #f9f9f9; min-height:340px; margin-top: 20px}
+
+.footerleft { margin-top:25px; padding:0 36px; }
+.logofooter { margin-bottom:10px; font-size:25px;}
+
+.footerleft p { font-size:12px !important; margin-bottom:15px}
+.footerleft p span { width:20px; color: #0a0a0a
+}
+
+.paddingtop-bottom { margin-top:25px;}
+
+.footer-ul { list-style-type:none;  padding-left:0; margin-left:2px;}
+.footer-ul li { line-height:29px; font-size:12px;}
+.footer-ul li a { color: #2F3133; transition: color 0.2s linear 0s, background 0.2s linear 0s; }
+.footer-ul i { margin-right:10px;}
+.footer-ul li a:hover {transition: color 0.2s linear 0s, background 0.2s linear 0s; color: #2e8f58; }
+
+.icon-ul { list-style-type:none !important; margin:0; padding:0;}
+.icon-ul li { line-height:75px; width:100%; float:left;}
+.icon { float:left; margin-right:5px;}
+
+.copyright { min-height:20px; background-color:#000000;}
+.copyright p { font-size: 12px; color:#FFF; padding:10px 0; margin-bottom:0;}
+
+.heading7 { font-size:21px; margin-bottom:12px; text-align: center; margin-top: 20px}
+
+.post p { font-size:12px; color:#FFF; line-height:20px;}
+.post p span { display:block; color:#8f8f8f;}
+
+// Social media section in footer
+
+.social:hover {
+  -webkit-transform: scale(1.8);
+  -moz-transform: scale(1.8);
+  -o-transform: scale(1.8);
+}
+.social {
+  -webkit-transform: scale(1.0);
+  /* Browser Variations: */
+
+  -moz-transform: scale(1.0);
+  -o-transform: scale(1.0);
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+}
+
+/*
+    Multicoloured Hover Variations
+*/
+
+#social-fb:hover {
+  color: #3B5998;
+}
+#social-tw:hover {
+  color: #4099FF;
+}
+#social-gp:hover {
+  color: #d34836;
+}
+#social-em:hover {
+  color: #f39c12;
+}

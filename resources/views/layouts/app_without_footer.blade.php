@@ -36,8 +36,6 @@
 @include('layouts.nav_bar')
 {{-- Content --}}
 @yield('content')
-{{-- Footer --}}
-@include('layouts.footer')
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>

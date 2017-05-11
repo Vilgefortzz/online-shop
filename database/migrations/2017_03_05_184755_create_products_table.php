@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('name', 30)->unique();
             $table->string('description', 50)->nullable();
-            $table->string('image')->default('missing.png');
+            $table->string('path_to_image')->default('/images/missing.png');
             $table->float('price')->unsigned();
             $table->integer('quantity')->unsigned()->nullable();
             $table->boolean('recommended')->default(false);

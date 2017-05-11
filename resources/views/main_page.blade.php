@@ -24,7 +24,7 @@
         <ul class="horizontal_menu">
             @foreach($categories as $category)
                 <li class="dropdown">
-                    <a data-toggle="dropdown" href="#"><h3><b>{{$category->name}}</b></h3></a>
+                    <a data-toggle="dropdown" href="#"><h2><img src="{{$category->path_to_image}}" width="100" height="100"><b>{{$category->name}}</b></h2></a>
                     <ul class="dropdown-menu expose">
                         @foreach($category->subcategories as $subcategory)
                             <li><a href="{{ url('/subcategories/'.$subcategory->id.'/products') }}"><b>{{$subcategory->name}}</b></a></li>
@@ -74,7 +74,7 @@
 
                 <div class="item col-xs-4 col-lg-4">
                     <div class="thumbnail">
-                        <img class="group list-group-image" src="/images/{{$recommendedProduct->image}}" width="200" height="200"/>
+                        <img class="group list-group-image" src="{{$recommendedProduct->path_to_image}}" width="200" height="200"/>
                         <div class="caption">
                             <h2 class="group inner list-group-item-heading">
                                 <b>
@@ -90,7 +90,7 @@
                                     <p><b>Buy now:</b></p>
                                     <p class="lead_main"><b>{{$recommendedProduct->price}}$</b></p>
                                 </div>
-                                <div class="col-xs-12 col-md-6">
+                                <div class="col-xs-12 col-md-7">
                                     @if(Session::has('cart'))
 
                                         @if(!array_key_exists($product->id, Session::get('cart')->products))

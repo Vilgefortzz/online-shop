@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_without_footer')
 
 @section('content')
 
@@ -8,7 +8,7 @@
 
                 <div class="panel panel_without_border panel-default">
                     <div class="panel-heading">
-                        <img src="{{$product->image}}" width="80" height="80" style="float: left">
+                        <img src="{{$product->path_to_image}}" width="80" height="80" style="float: left">
                         <h1 style="margin-left: 90px"><b>{{$product->name}}</b></h1>
                     </div>
 

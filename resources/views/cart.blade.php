@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_without_footer')
 
 @section('content')
     <div class="container container-fix">
@@ -22,28 +22,44 @@
                                     <li id="cart_product_{{array_first($products)['id']}}" class="list-group-item clearfix">
                                         <div id="product{{array_first($products)['id']}}_quantity">
 
-                                            <img src="{{array_first($products)['product']['image']}}" width="50" height="50">
+                                            <img src="{{array_first($products)['product']['path_to_image']}}" width="50" height="50">
                                             <b>{{array_first($products)['product']['name']}}</b>
 
                                             {{-- Change items number --}}
                                             <div class="input-group pull-right" style="width: 150px;">
 
-                                                <span class="input-group-btn">
-                                                    <button id="minus_{{array_first($products)['id']}}" type="button" class="btn btn-default delete-item set-quantity" disabled="disabled" data-type="minus" style="width: 38px">
-                                                        <span class="glyphicon glyphicon-minus"></span>
-                                                    </button>
-                                                </span>
+                                                @if(array_first($products)['quantity'] == 1)
+                                                    <span class="input-group-btn">
+                                                        <button id="minus_{{array_first($products)['id']}}" type="button" class="btn btn-default delete-item set-quantity" disabled="disabled" data-type="minus" style="width: 38px">
+                                                            <span class="glyphicon glyphicon-minus"></span>
+                                                        </button>
+                                                    </span>
+                                                @else
+                                                    <span class="input-group-btn">
+                                                        <button id="minus_{{array_first($products)['id']}}" type="button" class="btn btn-default delete-item set-quantity" data-type="minus" style="width: 38px">
+                                                            <span class="glyphicon glyphicon-minus"></span>
+                                                        </button>
+                                                    </span>
+                                                @endif
 
                                                 <input id="input_{{array_first($products)['id']}}" type="text"
                                                        href="{{ url('/cart/products/'.array_first($products)['id'].'/quantity')}}"
                                                        class="text-center form-control input-number"
                                                        value="{{array_first($products)['quantity']}}" min="1" max="{{array_first($products)['onStock']}}">
 
-                                                <span class="input-group-btn">
-                                                    <button id="plus_{{array_first($products)['id']}}" type="button" class="btn btn-default add-item set-quantity" data-type="plus" style="width: 38px">
-                                                        <span class="glyphicon glyphicon-plus"></span>
-                                                    </button>
-                                                </span>
+                                                    @if(array_first($products)['quantity'] == array_first($products)['onStock'])
+                                                        <span class="input-group-btn">
+                                                            <button id="plus_{{array_first($products)['id']}}" type="button" class="btn btn-default add-item set-quantity" disabled="disabled" data-type="plus" style="width: 38px">
+                                                                <span class="glyphicon glyphicon-plus"></span>
+                                                            </button>
+                                                        </span>
+                                                    @else
+                                                        <span class="input-group-btn">
+                                                            <button id="plus_{{array_first($products)['id']}}" type="button" class="btn btn-default add-item set-quantity" data-type="plus" style="width: 38px">
+                                                                <span class="glyphicon glyphicon-plus"></span>
+                                                            </button>
+                                                        </span>
+                                                    @endif
                                             </div>
                                         </div>
 
@@ -65,29 +81,45 @@
                                         <li id="cart_product_{{$product['id']}}" class="list-group-item clearfix">
                                             <div id="product{{$product['id']}}_quantity">
 
-                                                <img src="{{$product['product']['image']}}" width="50" height="50">
+                                                <img src="{{$product['product']['path_to_image']}}" width="50" height="50">
 
                                                 <b>{{$product['product']['name']}}</b>
 
                                                 {{-- Change items number --}}
                                                 <div class="input-group pull-right" style="width: 150px;">
 
-                                                    <span class="input-group-btn">
+                                                    @if($product['quantity'] == 1)
+                                                        <span class="input-group-btn">
                                                          <button id="minus_{{$product['id']}}" type="button" class="btn btn-default delete-item set-quantity" disabled="disabled" data-type="minus" style="width: 38px">
                                                              <span class="glyphicon glyphicon-minus"></span>
                                                          </button>
-                                                    </span>
+                                                        </span>
+                                                    @else
+                                                        <span class="input-group-btn">
+                                                         <button id="minus_{{$product['id']}}" type="button" class="btn btn-default delete-item set-quantity" data-type="minus" style="width: 38px">
+                                                             <span class="glyphicon glyphicon-minus"></span>
+                                                         </button>
+                                                        </span>
+                                                    @endif
 
                                                     <input id="input_{{$product['id']}}" type="text"
                                                            href="{{ url('/cart/products/'.$product['id'].'/quantity') }}"
                                                            class="text-center form-control input-number"
                                                            value="{{$product['quantity']}}" min="1" max="{{$product['onStock']}}">
 
-                                                    <span class="input-group-btn">
-                                                        <button id="plus_{{$product['id']}}" type="button" class="btn btn-default add-item set-quantity" data-type="plus" style="width: 38px">
-                                                            <span class="glyphicon glyphicon-plus"></span>
-                                                        </button>
-                                                    </span>
+                                                        @if($product['quantity'] == $product['onStock'])
+                                                            <span class="input-group-btn">
+                                                                <button id="plus_{{$product['id']}}" type="button" class="btn btn-default add-item set-quantity" disabled="disabled" data-type="plus" style="width: 38px">
+                                                                    <span class="glyphicon glyphicon-plus"></span>
+                                                                </button>
+                                                            </span>
+                                                        @else
+                                                            <span class="input-group-btn">
+                                                                <button id="plus_{{$product['id']}}" type="button" class="btn btn-default add-item set-quantity" data-type="plus" style="width: 38px">
+                                                                    <span class="glyphicon glyphicon-plus"></span>
+                                                                </button>
+                                                            </span>
+                                                        @endif
                                                 </div>
 
                                             </div>

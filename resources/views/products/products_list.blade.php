@@ -4,7 +4,7 @@
 @foreach($products as $product)
     <div class="item col-xs-4 col-lg-4">
         <div class="thumbnail">
-            <img class="group list-group-image" src="{{$product->image}}" width="200" height="200"/>
+            <img class="group list-group-image" src="{{$product->path_to_image}}" width="200" height="200"/>
             <div class="caption">
                 <h2 class="group inner list-group-item-heading">
                     <b>
@@ -20,7 +20,7 @@
                         <p><b>Buy now:</b></p>
                         <p class="lead_sub"><b>{{$product->price}}$</b></p>
                     </div>
-                    <div class="col-xs-12 col-md-6 group_div">
+                    <div class="col-xs-12 col-md-7 group_div">
 
                         @if(Session::has('cart'))
 

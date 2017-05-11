@@ -16,6 +16,7 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 40)->unique();
+            $table->string('path_to_image')->default('/images/missing.png');
             $table->timestamps();
         });
     }

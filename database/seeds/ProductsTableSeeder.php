@@ -38,7 +38,7 @@ class ProductsTableSeeder extends Seeder
             factory(Product::class)->create([
                 'subcategory_id' => $subcategorySwords->id,
                 'name' => $productsToSwords[$i],
-                'image' => $swordsImages[$i],
+                'path_to_image' => $swordsImages[$i],
                 'quantity' => 5
             ]);
         }
@@ -47,7 +47,7 @@ class ProductsTableSeeder extends Seeder
             factory(Product::class)->create([
                 'subcategory_id' => $subcategoryAxes->id,
                 'name' => $productsToAxes[$i],
-                'image' => $axesImages[$i],
+                'path_to_image' => $axesImages[$i],
                 'quantity' => 8
             ]);
         }
@@ -56,7 +56,7 @@ class ProductsTableSeeder extends Seeder
             factory(Product::class)->create([
                 'subcategory_id' => $subcategoryShields->id,
                 'name' => $productsToShields[$i],
-                'image' => $shieldsImages[$i],
+                'path_to_image' => $shieldsImages[$i],
                 'quantity' => 14
             ]);
         }
@@ -65,7 +65,7 @@ class ProductsTableSeeder extends Seeder
             factory(Product::class)->create([
                 'subcategory_id' => $subcategoryHelmets->id,
                 'name' => $productsToHelmets[$i],
-                'image' => $helmetsImages[$i],
+                'path_to_image' => $helmetsImages[$i],
                 'quantity' => 3
             ]);
         }

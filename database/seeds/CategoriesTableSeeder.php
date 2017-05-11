@@ -12,13 +12,13 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $categoryNames = ['To Fight', 'To Defend'];
-
-        $categories = [];
+        $categoryNames = ['To Attack', 'To Defend'];
+        $pathToImages = ['/images/icons/attack_category.png', '/images/icons/defend_category.png'];
 
         for ($i = 0; $i < count($categoryNames); $i++) {
-            $categories[] = factory(Category::class)->create([
-                'name' => $categoryNames[$i]
+            factory(Category::class)->create([
+                'name' => $categoryNames[$i],
+                'path_to_image' => $pathToImages[$i]
             ]);
         }
     }

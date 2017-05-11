@@ -86,4 +86,16 @@ $(document).ready(function() {
 
         sessionStorage.clear();
     }
+
+    /**
+     * FAQ
+     */
+
+    $('.faq_group').on('click', function () {
+
+        var faq_id = $(this).attr('id');
+        var id = faq_id.split('_')[1];
+
+        $('#answer_' + id).slideDown();
+    });
 });

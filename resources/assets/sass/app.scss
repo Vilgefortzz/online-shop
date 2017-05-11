@@ -13,6 +13,9 @@
 // Categories side bar menu
 @import "categories_nav_bar";
 
+// Footer
+@import "footer";
+
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
@@ -388,4 +391,13 @@ body{
 .remove_all:focus{
   color: black;
   text-decoration: none;
+}
+
+.faq_group:hover{
+  color: white;
+  background: #312822;
+}
+
+.answer_group{
+  list-style: none;
 }

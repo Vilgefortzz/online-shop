@@ -13,18 +13,18 @@ class SubcategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $subcategoryNamesToFight = ['swords', 'axes', 'katanas'];
+        $subcategoryNamesToAttack = ['swords', 'axes', 'katanas'];
         $subcategoryNamesToDefend = ['armours', 'helmets', 'shields'];
 
         $categories = Category::all();
 
-        $categoryToFight = $categories->where('name', 'To Fight')->first();
+        $categoryToAttack = $categories->where('name', 'To Attack')->first();
         $categoryToDefend = $categories->where('name', 'To Defend')->first();
 
-        for ($i = 0; $i < count($subcategoryNamesToFight); $i++) {
+        for ($i = 0; $i < count($subcategoryNamesToAttack); $i++) {
             factory(Subcategory::class)->create([
-                'name' => $subcategoryNamesToFight[$i],
-                'category_id' => $categoryToFight->id
+                'name' => $subcategoryNamesToAttack[$i],
+                'category_id' => $categoryToAttack->id
             ]);
         }
 

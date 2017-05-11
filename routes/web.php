@@ -63,3 +63,19 @@ Route::group(['prefix' => 'products'], function () {
 
 Route::get('/subcategories/{subcategory}/products', 'SubcategoryController@showAllProducts');
 Route::post('/products/{product}/reviews/add', 'ReviewController@store');
+
+/*
+ * Info - terms and conditions, faq
+ */
+
+Route::get('/faq', function () {
+    return view('info.faq');
+});
+
+Route::get('/aboutUs', function () {
+    return view('info.about_us');
+});
+
+Route::get('/termsAndConditions', function () {
+    return view('info.terms_and_conditions');
+});
