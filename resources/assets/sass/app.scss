@@ -4,9 +4,6 @@
 // Variables
 @import "variables";
 
-// Focus and dim screen on hover
-@import "focus_and_dim";
-
 // Recommended products list
 @import "products_list";
 
@@ -79,8 +76,37 @@ body{
   text-decoration: none;
 }
 
+.dropdown_cat{
+  display: inline-block;
+}
+
+.dropdown_cat a{
+  display: block;
+  color: #59585b;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.sub_cat_menu{
+  font-size: 20px;
+  list-style: none;
+}
+
+.sub_cat_menu a{
+  color: darkred;
+  text-decoration: none;
+}
+
+.sub_cat_menu a:hover{
+  color: black;
+}
+
 .horizontal_menu > li a:hover{
-  color: #29282b;
+  color: black;
+}
+
+.horizontal_menu > li a:focus{
+  color: black;
 }
 
 .horizontal_line{
@@ -393,6 +419,21 @@ body{
   text-decoration: none;
 }
 
+.nice_links{
+  color: black;
+  text-decoration: none;
+}
+
+.nice_links:hover{
+  color: darkred;
+  text-decoration: none;
+}
+
+.nice_links:active{
+  color: darkred;
+  text-decoration: none;
+}
+
 .faq_group:hover{
   color: white;
   background: #312822;
@@ -400,4 +441,18 @@ body{
 
 .answer_group{
   list-style: none;
+}
+
+// Checkout styles
+
+.table > tbody > tr > .no-line {
+  border-top: none;
+}
+
+.table > thead > tr > .no-line {
+  border-bottom: none;
+}
+
+.table > tbody > tr > .thick-line {
+  border-top: 2px solid;
 }

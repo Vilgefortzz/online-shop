@@ -37,6 +37,12 @@ Route::delete('/cart/delete/{product}','CartController@deleteProduct');
 
 Route::post('/cart/products/{product}/quantity', 'CartController@setQuantity');
 
+/**
+ * Checkout, orders
+ */
+
+Route::get('/checkout', 'ShopController@showCheckout');
+
 /*
  * User Routes
  */

@@ -67,7 +67,8 @@
                                 @foreach(Session::get('cart')->products as $product)
                                     <li>
                                         <a href="#">
-                                            <span class="glyphicon glyphicon-hand-right"></span>{{$product['product']['name']}}
+                                            <img src="{{$product['product']['path_to_image']}}" width="30" height="30">
+                                            <b>{{$product['product']['name']}}</b>
                                         </a>
                                     </li>
                                 @endforeach

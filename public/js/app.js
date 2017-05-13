@@ -11280,12 +11280,34 @@ $(document).ready(function () {
         }
     });
 
-    $('.give_review').on('click', function () {
+    /**
+     * FAQ
+     */
 
-        sessionStorage.setItem('hash', 'write_review');
+    $('.faq_group').on('click', function () {
+
+        var faq_id = $(this).attr('id');
+        var id = faq_id.split('_')[1];
+
+        $('#answer_' + id).slideDown();
     });
 
-    if (sessionStorage.length > 0) {
+    /**
+     * Subcategory menu from main page
+     */
+
+    $('.dropdown_cat').on('click', function (e) {
+        e.preventDefault();
+
+        var cat_id = $(this).attr('id');
+        var id = cat_id.split('_')[1];
+
+        $('.sub_cat_menu').hide();
+
+        $('#sub_cat_' + id).fadeIn();
+    });
+
+    if (localStorage.length > 0) {
 
         if ($('#write_review').length != 0) {
             $('html, body').animate({
@@ -11299,20 +11321,8 @@ $(document).ready(function () {
             }, 800);
         }
 
-        sessionStorage.clear();
+        localStorage.clear();
     }
-
-    /**
-     * FAQ
-     */
-
-    $('.faq_group').on('click', function () {
-
-        var faq_id = $(this).attr('id');
-        var id = faq_id.split('_')[1];
-
-        $('#answer_' + id).slideDown();
-    });
 });
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 

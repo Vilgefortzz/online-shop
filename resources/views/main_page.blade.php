@@ -23,16 +23,19 @@
         {{--Categories bar menu--}}
         <ul class="horizontal_menu">
             @foreach($categories as $category)
-                <li class="dropdown">
-                    <a data-toggle="dropdown" href="#"><h2><img src="{{$category->path_to_image}}" width="100" height="100"><b>{{$category->name}}</b></h2></a>
-                    <ul class="dropdown-menu expose">
-                        @foreach($category->subcategories as $subcategory)
-                            <li><a href="{{ url('/subcategories/'.$subcategory->id.'/products') }}"><b>{{$subcategory->name}}</b></a></li>
-                        @endforeach
-                    </ul>
+                <li id="cat_{{$category->id}}" class="dropdown_cat">
+                    <a href="#"><h2><img src="{{$category->path_to_image}}" width="100" height="100"><b>{{$category->name}}</b></h2></a>
                 </li>
             @endforeach
         </ul>
+
+        @foreach($categories as $category)
+            <ul id="sub_cat_{{$category->id}}" class="sub_cat_menu" hidden>
+                @foreach($category->subcategories as $subcategory)
+                    <li><a href="{{ url('/subcategories/'.$subcategory->id.'/products') }}"><b>{{$subcategory->name}}</b></a></li>
+                @endforeach
+            </ul>
+        @endforeach
 
         {{--Horizontal line--}}
         <div class="horizontal_line"></div>
@@ -88,7 +91,7 @@
                             <div class="row" style="margin-top: 50px">
                                 <div class="col-xs-12 col-md-4">
                                     <p><b>Buy now:</b></p>
-                                    <p class="lead_main"><b>{{$recommendedProduct->price}}$</b></p>
+                                    <p class="lead_main"><b>${{$recommendedProduct->price}}</b></p>
                                 </div>
                                 <div class="col-xs-12 col-md-7">
                                     @if(Session::has('cart'))
@@ -142,10 +145,6 @@
             @endforeach
         </div>
     </div>
-
-    <div id="overlay"></div>
-
-    <script src="{{ asset('js/focus_and_dim.js') }}"></script>
 
     {{-- AJAX scripts--}}
 

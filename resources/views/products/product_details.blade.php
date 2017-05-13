@@ -23,7 +23,7 @@
 
                             <div class="col-md-4 group_div">
                                 <p><b>Buy now:</b></p>
-                                <p class="lead_sub"><b>{{$product->price}}$</b></p>
+                                <p class="lead_sub"><b>${{$product->price}}</b></p>
                             </div>
                             <div class="col-md-6 group_div">
                                 @if(Session::has('cart'))
@@ -77,9 +77,19 @@
                                 <div class="col-md-2 text-center">
                                     <b>Product availability</b>
                                     <div class="progress">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100000" style="width: 40%">
-                                            <span class="sr-only">40% Complete (success)</span>
-                                        </div>
+                                        @if($product->quantity <= 5)
+                                            <div class="progress-bar progress-bar-danger"
+                                                 role="progressbar" data-toggle="tooltip" data-placement="bottom"
+                                                    title="Available: {{$product->quantity}} pcs of product" style="width: {{$product->quantity}}%"></div>
+                                        @elseif($product->quantity > 5 && $product->quantity <= 30)
+                                            <div class="progress-bar progress-bar-warning"
+                                                 role="progressbar" data-toggle="tooltip" data-placement="bottom"
+                                                    title="Available: {{$product->quantity}} pcs of product" style="width: {{$product->quantity}}%"></div>
+                                        @elseif($product->quantity > 30)
+                                            <div class="progress-bar progress-bar-success"
+                                                 role="progressbar" data-toggle="tooltip" data-placement="bottom"
+                                                    title="Available: {{$product->quantity}} pcs of product" style="width: {{$product->quantity}}%"></div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

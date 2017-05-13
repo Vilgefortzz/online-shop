@@ -18,7 +18,7 @@
                 <div class="row" style="margin-top: 50px">
                     <div class="col-xs-12 col-md-4 group_div">
                         <p><b>Buy now:</b></p>
-                        <p class="lead_sub"><b>{{$product->price}}$</b></p>
+                        <p class="lead_sub"><b>${{$product->price}}</b></p>
                     </div>
                     <div class="col-xs-12 col-md-7 group_div">
 
