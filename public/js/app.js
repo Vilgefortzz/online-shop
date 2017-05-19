@@ -11233,7 +11233,7 @@ __webpack_require__(33);
 Vue.component('example', __webpack_require__(38));
 
 var app = new Vue({
-    el: '#app'
+  el: '#app'
 });
 
 /**
@@ -11249,81 +11249,6 @@ __webpack_require__(32);
  * Active tooltip - show etc.
  */
 $('[data-toggle="tooltip"]').tooltip();
-
-$(document).ready(function () {
-
-    var orig_height = $('#review_text_area').height();
-    var new_height = 150;
-
-    $('#review_text_area').on('focus', function () {
-
-        $(this).animate({ height: new_height + 'px' });
-    });
-
-    $('#review_text_area').on('blur', function () {
-
-        $(this).animate({ height: orig_height + 'px' });
-    });
-
-    $('#give_review_this_page').on('click', function () {
-
-        if ($('#write_review').length != 0) {
-            $('html, body').animate({
-                scrollTop: $('#write_review').offset().top - 170
-            }, 800);
-
-            $('#review_text_area').focus();
-        } else {
-            $('html, body').animate({
-                scrollTop: $('#review_given').offset().top - 170
-            }, 800);
-        }
-    });
-
-    /**
-     * FAQ
-     */
-
-    $('.faq_group').on('click', function () {
-
-        var faq_id = $(this).attr('id');
-        var id = faq_id.split('_')[1];
-
-        $('#answer_' + id).slideDown();
-    });
-
-    /**
-     * Subcategory menu from main page
-     */
-
-    $('.dropdown_cat').on('click', function (e) {
-        e.preventDefault();
-
-        var cat_id = $(this).attr('id');
-        var id = cat_id.split('_')[1];
-
-        $('.sub_cat_menu').hide();
-
-        $('#sub_cat_' + id).fadeIn();
-    });
-
-    if (localStorage.length > 0) {
-
-        if ($('#write_review').length != 0) {
-            $('html, body').animate({
-                scrollTop: $('#write_review').offset().top - 170
-            }, 800);
-
-            $('#review_text_area').focus();
-        } else {
-            $('html, body').animate({
-                scrollTop: $('#review_given').offset().top - 170
-            }, 800);
-        }
-
-        localStorage.clear();
-    }
-});
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),

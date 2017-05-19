@@ -421,17 +421,10 @@ body{
 
 .nice_links{
   color: black;
-  text-decoration: none;
 }
 
 .nice_links:hover{
-  color: darkred;
-  text-decoration: none;
-}
-
-.nice_links:active{
-  color: darkred;
-  text-decoration: none;
+  color: #6c862c;
 }
 
 .faq_group:hover{
@@ -455,4 +448,54 @@ body{
 
 .table > tbody > tr > .thick-line {
   border-top: 2px solid;
+}
+
+.cc-selector input{
+  margin:0;padding:0;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+}
+
+.inpost_courier{background-image:url('/images/icons/inPost_courier.png')}
+.inpost_paczkomat{background-image:url('/images/icons/inPost_paczkomat.jpg')}
+.ups{background-image:url('/images/icons/ups.png')}
+.poczta_polska{background-image:url('/images/icons/poczta_polska.jpg')}
+
+.credit_card{background-image:url('/images/icons/credit_card.png')}
+.usual_transfer{background-image:url('/images/icons/usual_transfer.png')}
+
+.cc-selector input:active +.radio_nice{
+  opacity: .9;
+}
+
+.cc-selector input:checked +.radio_nice{
+  -webkit-filter: none;
+  -moz-filter: none;
+  filter: none;
+}
+
+.radio_nice{
+  cursor:pointer;
+  background-size:contain;
+  background-repeat:no-repeat;
+  display:inline-block;
+  width:140px;height:90px;
+  -webkit-transition: all 100ms ease-in;
+  -moz-transition: all 100ms ease-in;
+  transition: all 100ms ease-in;
+  -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+  -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
+  filter: brightness(1.8) grayscale(1) opacity(.7);
+}
+
+.radio_nice:hover{
+  -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+  -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+  filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+
+#place_an_order_btn:hover{
+  background-color: #d77c1f;
+  color: black;
 }

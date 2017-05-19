@@ -102,18 +102,21 @@
                                 </div>
                             </div>
 
-                            <hr>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="text-center">
-                                        <b>
-                                            <a href="{{ url('/checkout') }}" class="btn btn-success">
-                                                <span class="glyphicon glyphicon-ok"></span>Go to checkout panel
-                                            </a>
-                                        </b>
+                            @if(count($products) > 0)
+
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="text-center">
+                                            <b>
+                                                <a href="{{ url('/checkout') }}" class="btn btn-default">
+                                                    <span class="glyphicon glyphicon-ok"></span>Go to checkout panel
+                                                </a>
+                                            </b>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endif
 
                         @else
                             <h3 class="text-center">Your cart is empty :(</h3>

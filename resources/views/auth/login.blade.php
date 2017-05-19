@@ -63,6 +63,9 @@
                         </div>
                     </form>
                 </div>
+
+                <i><span><a href="{{ url('/register') }}" style="color: #8b102a">Haven't an account yet? Register now for FREE</a></span></i>
+
             </div>
         </div>
     </div>

@@ -59,29 +59,31 @@
                                 </tr>
                                 </tbody>
                             </table>
-
-                            <div class="col-md-4">
-                                <b>
-                                    <a href="{{ url('/cart') }}" class="nice_links">
-                                        <span class="glyphicon glyphicon-shopping-cart"></span>
-                                        Back to shopping cart
-                                    </a>
-                                </b>
-                            </div>
-
                         </div>
+
+                        <div class="col-md-5">
+                            <b>
+                                <a href="{{ url('/cart') }}" class="nice_links">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                                    Back to shopping cart
+                                </a>
+                            </b>
+                        </div>
+
                     </div>
                 </div>
 
-                <hr>
-                <div class="col-md-3">
-                    <b>
-                        <a href="#" class="nice_links">
-                            <span class="glyphicon glyphicon-check"></span>
-                            Next
-                        </a>
-                    </b>
-                </div>
+                @if(count($products) > 0)
+                    <hr>
+                    <div class="col-md-5">
+                        <b>
+                            <a href="{{ url('/placeAnOrder') }}" class="nice_links">
+                                <span class="glyphicon glyphicon-check"></span>
+                                Choose delivery method and payment
+                            </a>
+                        </b>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

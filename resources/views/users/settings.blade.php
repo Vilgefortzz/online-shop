@@ -9,26 +9,26 @@
                 {{--Horizontal line--}}
                 <div class="horizontal_line"></div>
 
-                {{--Change name--}}
+                {{--Change username--}}
                 <div class="panel panel_without_border panel-default">
                     <div class="panel-heading text-center">
-                        <h4 style="margin-top: 0">Change your name</h4>
+                        <h4 style="margin-top: 0">Change your username</h4>
                     </div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('users/'.Auth::user()->id.'/update/name') }}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('users/'.Auth::user()->id.'/update/username') }}">
                             {{ csrf_field() }}
                             {{ method_field('PUT') }}
 
-                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="name" class="col-md-4 control-label">Your name</label>
+                            <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                                <label for="name" class="col-md-4 control-label">Your new username</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" required>
+                                    <input id="username" type="text" class="form-control" name="username" required>
 
-                                    @if ($errors->has('name'))
+                                    @if ($errors->has('username'))
                                         <span class="help-block">
-                                            <strong>{{ $errors->first('name') }}</strong>
+                                            <strong>{{ $errors->first('username') }}</strong>
                                         </span>
                                     @endif
                                 </div>
@@ -37,7 +37,7 @@
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">
                                     <button type="submit" class="btn btn-info">
-                                        Change your name
+                                        Change your username
                                     </button>
                                 </div>
                             </div>

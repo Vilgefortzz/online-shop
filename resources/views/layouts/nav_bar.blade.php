@@ -25,13 +25,17 @@
             <!-- Center Side Of Navbar - used to display flash messages -->
             <ul class="nav nav-center">
 
-                @if(Session::has('changed_name'))
-                    <div class="alert alert-success flash-message text-center">{{ Session::get('changed_name') }}</div>
+                @if(Session::has('changed_username'))
+                    <div class="alert alert-success flash-message text-center">{{ Session::get('changed_username') }}</div>
                 @endif
 
                 @if(Session::has('changed_password'))
                     <div class="alert alert-success flash-message text-center">{{ Session::get('changed_password') }}</div>
                 @endif
+
+                    @if(Session::has('changed_personal_data'))
+                        <div class="alert alert-success flash-message text-center">{{ Session::get('changed_personal_data') }}</div>
+                    @endif
 
                     @if(Session::has('changed_email'))
                         <div class="alert alert-success flash-message text-center">{{ Session::get('changed_email') }}</div>
@@ -94,10 +98,15 @@
                 <!-- Authentication Links -->
                     <li class="dropdown">
                         <a href="#">
-                            <span class="glyphicon glyphicon-user"></span>{{ Auth::user()->name }}
+                            <span class="glyphicon glyphicon-user"></span>{{ Auth::user()->username }}
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="{{ url('users/'.Auth::user()->id.'/personalData') }}">
+                                    <span class="glyphicon glyphicon-briefcase"></span>Your personal data
+                                </a>
+                            </li>
                             <li>
                                 <a href="{{ url('users/'.Auth::user()->id.'/settings') }}">
                                     <span class="glyphicon glyphicon-cog"></span>Settings

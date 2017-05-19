@@ -151,4 +151,22 @@
     <script src="{{ asset('js/add_to_cart_ajax.js') }}"></script>
     <script src="{{ asset('js/delete_from_cart_view_products_ajax.js') }}"></script>
 
+    <script type="text/javascript">
+
+        /**
+         * Subcategory menu from main page
+         */
+
+        $('.dropdown_cat').on('click', function (e) {
+            e.preventDefault();
+
+            var cat_id = $(this).attr('id');
+            var id = cat_id.split('_')[1];
+
+            $('.sub_cat_menu').hide();
+
+            $('#sub_cat_' + id).fadeIn();
+        });
+    </script>
+
 @endsection

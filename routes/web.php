@@ -38,22 +38,38 @@ Route::delete('/cart/delete/{product}','CartController@deleteProduct');
 Route::post('/cart/products/{product}/quantity', 'CartController@setQuantity');
 
 /**
- * Checkout, orders
+ * Checkout your products
  */
+Route::get('/checkout', 'OrderController@showCheckout');
 
-Route::get('/checkout', 'ShopController@showCheckout');
+/**
+ * Make orders
+ */
+Route::get('/placeAnOrder', 'OrderController@showPlaceAnOrder');
+Route::post('/placeAnOrder', 'OrderController@store');
+
+/**
+ * Order was made, thanks for purchase
+ */
+Route::get('/madeAnOrder', 'OrderController@showMadeAnOrder');
 
 /*
  * User Routes
  */
 Route::group(['prefix' => 'users'], function () {
 
-    Route::get('/{user}/settings', 'UserController@showSettings');
+    /*
+     * Personal data panel
+     */
+    Route::get('/{user}/personalData', 'UserController@showPersonalData');
+    Route::get('/{user}/getPersonalData', 'UserController@getPersonalData');
+    Route::put('/{user}/update/personalData', 'UserController@updatePersonalData');
 
     /*
      * Settings panel
      */
-    Route::put('/{user}/update/name', 'UserController@updateName');
+    Route::get('/{user}/settings', 'UserController@showSettings');
+    Route::put('/{user}/update/username', 'UserController@updateUsername');
     Route::put('/{user}/update/password', 'UserController@updatePassword');
     Route::put('/{user}/update/email', 'UserController@updateEmail');
     Route::delete('/{user}/delete', 'UserController@delete');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Session;
 
 class UserController extends Controller
@@ -13,22 +14,34 @@ class UserController extends Controller
     public function showSettings(User $user){
 
         return view('users.settings', compact('user'));
-
     }
 
-    public function updateName(User $user, Request $request){
+    public function showPersonalData(User $user){
+
+        return view('users.personal_data', compact('user'));
+    }
+
+    /**
+     * Ajax request
+     */
+    public function getPersonalData(User $user){
+
+        return response()->json($user);
+    }
+
+    public function updateUsername(User $user, Request $request){
 
         /*
-         * Validate name correctness
+         * Validate username correctness
          */
         $this->validate($request, [
-            'name' => 'required|min:5|max:30',
+            'username' => 'required|min:5|max:30',
         ]);
 
-        $user->name = $request->name;
+        $user->username = $request->username;
         $user->save();
 
-        session()->flash('changed_name', 'You have succesfully changed your name');
+        session()->flash('changed_username', 'You have successfully changed your username');
 
         return back();
     }
@@ -45,7 +58,7 @@ class UserController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
-        session()->flash('changed_password', 'You have succesfully changed your password');
+        session()->flash('changed_password', 'You have successfully changed your password');
 
         return back();
     }
@@ -62,7 +75,35 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->save();
 
-        session()->flash('changed_email', 'You have succesfully changed your e-mail address');
+        session()->flash('changed_email', 'You have successfully changed your e-mail address');
+
+        return back();
+    }
+
+    public function updatePersonalData(User $user, Request $request){
+
+        /*
+         * Validate data
+         */
+        $this->validate($request, [
+            'first_name' => 'required|min:3|max:30',
+            'last_name' => 'required|min:5|max:50',
+            'street' => 'required|min:5|max:50',
+            'postal_code' => 'required|min:5|max:20',
+            'city' => 'required|min:5|max:15',
+            'phone_number' => 'required'
+        ]);
+
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->street = $request->street;
+        $user->postal_code = $request->postal_code;
+        $user->city = $request->city;
+        $user->country = $request->country;
+        $user->phone_number = $request->phone_number;
+        $user->save();
+
+        session()->flash('changed_personal_data', 'You have successfully changed your personal data');
 
         return back();
     }
