@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Cart;
 use App\Order;
+use App\OrderProduct;
+use App\Product;
 use Auth;
 use Illuminate\Http\Request;
 use Session;
@@ -70,10 +72,31 @@ class OrderController extends Controller
         $order->total_paid = $cart->totalPrice;
         $order->delivery_method = $request->delivery_methods;
         $order->payment_method = $request->payment_methods;
-        $order->status = "New";
+        $order->status = "Pending";
         $order->save();
 
-        Session::flush();
+        // Create order products
+
+        foreach ($cart->products as $product){
+
+            $orderProduct = new OrderProduct();
+            $orderProduct->order_id = $order->id;
+            $orderProduct->product_id = $product['id'];
+
+            $orderProduct->quantity = $product['quantity'];
+            $orderProduct->priceForAllItems = $product['priceForAllItems'];
+            $orderProduct->save();
+
+            // Decrease quantity of products on stock
+
+            $dbProduct = Product::find($product['id']);
+            $dbProduct->quantity -= $product['quantity'];
+            $dbProduct->save();
+        }
+
+        // Clear shopping cart after making order
+        Session::forget('cart');
+
         return redirect()->to('/madeAnOrder');
     }
 

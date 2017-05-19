@@ -1,13 +1,13 @@
-$('.dropdown').hover(
+$('.dropdown-dynamic').hover(
     function() {
-        $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn();
+        $(this).find('.dropdown-menu-dynamic').stop(true, true).delay(200).fadeIn();
     },
     function() {
-        $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut();
+        $(this).find('.dropdown-menu-dynamic').stop(true, true).delay(200).fadeOut();
     }
 );
 
-$('.dropdown-menu').hover(
+$('.dropdown-menu-dynamic').hover(
     function() {
         $(this).stop(true, true);
     },

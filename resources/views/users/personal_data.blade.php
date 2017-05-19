@@ -11,7 +11,7 @@
 
                     {{--Personal data--}}
                     <div class="panel panel_without_border panel-default">
-                        <div class="panel-heading text-center">
+                        <div class="panel-heading panel-heading-fix text-center">
                             <h4 style="margin-top: 0">Your personal data</h4>
                         </div>
 

@@ -12211,13 +12211,13 @@ window.axios.defaults.headers.common = {
 /* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {$('.dropdown').hover(function () {
-    $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn();
+/* WEBPACK VAR INJECTION */(function($) {$('.dropdown-dynamic').hover(function () {
+    $(this).find('.dropdown-menu-dynamic').stop(true, true).delay(200).fadeIn();
 }, function () {
-    $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut();
+    $(this).find('.dropdown-menu-dynamic').stop(true, true).delay(200).fadeOut();
 });
 
-$('.dropdown-menu').hover(function () {
+$('.dropdown-menu-dynamic').hover(function () {
     $(this).stop(true, true);
 }, function () {
     $(this).stop(true, true).delay(200).fadeOut();

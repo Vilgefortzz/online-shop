@@ -73,6 +73,19 @@ Route::group(['prefix' => 'users'], function () {
     Route::put('/{user}/update/password', 'UserController@updatePassword');
     Route::put('/{user}/update/email', 'UserController@updateEmail');
     Route::delete('/{user}/delete', 'UserController@delete');
+
+    /*
+     * Orders panel
+     */
+    Route::get('/{user}/orders','UserController@showOrders');
+
+    /*
+     * Sorting orders
+     */
+
+    Route::get('/{user}/orders/pending', 'UserController@showPendingOrders');
+    Route::get('/{user}/orders/completed', 'UserController@showCompletedOrders');
+
 });
 
 /*

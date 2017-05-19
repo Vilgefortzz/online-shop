@@ -16,8 +16,8 @@ class Product extends Model
         return $this->hasMany('App\Review');
     }
 
-    public function items()
+    public function orderProducts()
     {
-        return $this->hasMany('App\Item');
+        return $this->hasMany('App\OrderProduct');
     }
 }

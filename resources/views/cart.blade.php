@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel_without_border panel-default">
-                    <div class="panel-heading text-center">
+                    <div class="panel-heading panel-heading-fix text-center">
                         <h2 style="margin-top: 0"><span class="glyphicon glyphicon-shopping-cart"></span>Products in cart:</h2>
                     </div>
 

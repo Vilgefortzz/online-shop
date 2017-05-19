@@ -167,6 +167,15 @@
 
             $('#sub_cat_' + id).fadeIn();
         });
+
+        /**
+         * Animate from another page - set
+         */
+
+        $('.give_review').on('click', function () {
+            localStorage.setItem('animate', 'animate');
+        })
+
     </script>
 
 @endsection

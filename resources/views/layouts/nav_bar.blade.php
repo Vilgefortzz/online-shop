@@ -54,7 +54,7 @@
             <ul class="nav navbar-nav navbar-right">
 
                 <!-- Cart -->
-                <li class="dropdown">
+                <li class="dropdown dropdown-dynamic">
                     <a id="shopping_cart" href="{{ url('/cart') }}">
                         <span class="glyphicon glyphicon-shopping-cart glyphicon-fix"></span>
                         {{--Number of products--}}
@@ -62,7 +62,7 @@
                     </a>
 
                     @if(Session::has('cart'))
-                        <ul id="cart_list" class="dropdown-menu" role="menu">
+                        <ul id="cart_list" class="dropdown-menu dropdown-menu-dynamic" role="menu">
                             @if(Session::get('cart')->numberOfProducts == 0)
                                 <li>
                                     <h5 class="text-center">Cart is empty</h5>
@@ -80,7 +80,7 @@
                         </ul>
                     @else
 
-                            <ul id="cart_list" class="dropdown-menu" role="menu">
+                            <ul id="cart_list" class="dropdown-menu dropdown-menu-dynamic" role="menu">
                                 <li>
                                     <h5 class="text-center">Cart is empty</h5>
                                 </li>
@@ -96,12 +96,12 @@
                 @else
 
                 <!-- Authentication Links -->
-                    <li class="dropdown">
+                    <li class="dropdown dropdown-dynamic">
                         <a href="#">
                             <span class="glyphicon glyphicon-user"></span>{{ Auth::user()->username }}
                         </a>
 
-                        <ul class="dropdown-menu" role="menu">
+                        <ul class="dropdown-menu dropdown-menu-dynamic" role="menu">
                             <li>
                                 <a href="{{ url('users/'.Auth::user()->id.'/personalData') }}">
                                     <span class="glyphicon glyphicon-briefcase"></span>Your personal data
@@ -113,7 +113,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{{ url('/users/'.Auth::user()->id.'/orders') }}">
                                     <span class="glyphicon glyphicon-modal-window"></span>Your orders
                                 </a>
                             </li>

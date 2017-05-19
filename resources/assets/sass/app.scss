@@ -65,11 +65,11 @@ body{
   text-align: center;
 }
 
-.dropdown{
+.dropdown-dynamic{
   display: inline-block;
 }
 
-.dropdown a{
+.dropdown-dynamic a{
   display: block;
   color: #59585b;
   padding: 14px 16px;
@@ -118,7 +118,7 @@ body{
   margin-bottom: 10px;
 }
 
-.dropdown-menu li a{
+.dropdown-menu-dynamic li a{
   display: block;
   text-align: left;
 }
@@ -299,7 +299,7 @@ body{
   margin-top: 4px;
 }
 
-.panel-heading{
+.panel-heading-fix{
   font-size: 14px;
   border: none;
 }
@@ -471,7 +471,7 @@ body{
 
 .cc-selector input:checked +.radio_nice{
   -webkit-filter: none;
-  -moz-filter: none;
+  -moz-filter : none;
   filter: none;
 }
 
@@ -498,4 +498,50 @@ body{
 #place_an_order_btn:hover{
   background-color: #d77c1f;
   color: black;
+}
+
+// Orders history
+
+.panel-order {
+  /* used to change default values without adding additional class */
+}
+.panel-order .row {
+  border-bottom: 1px solid #ccc;
+}
+.panel-order .row:last-child {
+  border: 0;
+}
+.panel-order .row .col-md-1  {
+  text-align: center;
+  padding-top: 15px;
+}
+.panel-order .row .col-md-1 img {
+  width: 50px;
+  max-height: 50px;
+}
+.panel-order .row .row {
+  border-bottom: 0;
+}
+.panel-order .row .col-md-11 {
+  border-left: 1px solid #ccc;
+}
+.panel-order .row .row .col-md-12 {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+.panel-order .row .row .col-md-12:last-child {
+  font-size: 13px;
+  color: #555;
+  background: #efefef;
+}
+.panel-order .btn-group {
+  margin: 0;
+  padding: 0;
+}
+.panel-order .panel-body {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.panel-order .panel-deading {
+  margin-bottom: 0;
 }

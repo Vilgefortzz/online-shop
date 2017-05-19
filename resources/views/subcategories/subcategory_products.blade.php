@@ -67,4 +67,12 @@
     {{-- Change view (grid, list)--}}
     <script src="{{ asset('js/change_view.js') }}"></script>
 
+    <script type="text/javascript">
+
+        $('.give_review').on('click', function () {
+            localStorage.setItem('animate', 'animate');
+        })
+
+    </script>
+
 @endsection

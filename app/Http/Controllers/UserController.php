@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
@@ -19,6 +20,31 @@ class UserController extends Controller
     public function showPersonalData(User $user){
 
         return view('users.personal_data', compact('user'));
+    }
+
+    public function showOrders(User $user){
+
+        $orders = Order::where('user_id', $user->id)->orderBy('created_at', 'desc')->paginate(2);
+
+        return view('users.orders', compact('orders'));
+    }
+
+    public function showPendingOrders(User $user){
+
+        $orders = Order::where('user_id', $user->id)
+            ->where('status', 'Pending')
+            ->orderBy('created_at', 'desc')->paginate(2);
+
+        return view('users.orders', compact('orders'));
+    }
+
+    public function showCompletedOrders(User $user){
+
+        $orders = Order::where('user_id', $user->id)
+            ->where('status', 'Completed')
+            ->orderBy('created_at', 'desc')->paginate(2);
+
+        return view('users.orders', compact('orders'));
     }
 
     /**

@@ -10,7 +10,7 @@
 
                     {{--Personal data--}}
                     <div class="panel panel_without_border panel-default">
-                        <div class="panel-heading text-center">
+                        <div class="panel-heading panel-heading-fix text-center">
                             <h2 style="margin-top: 0">Your data</h2>
                         </div>
 
@@ -388,7 +388,7 @@
                             <hr>
                             {{--Choose delivery method--}}
                             <div id="delivery_section" class="panel panel_without_border panel-default">
-                                <div class="panel-heading text-center">
+                                <div class="panel-heading panel-heading-fix text-center">
                                     <h2 style="margin-top: 0">Delivery methods</h2>
                                 </div>
 
@@ -415,7 +415,7 @@
                             <hr>
                             {{--Choose payment method--}}
                             <div id="payment_section" class="panel panel_without_border panel-default">
-                                <div class="panel-heading text-center">
+                                <div class="panel-heading panel-heading-fix text-center">
                                     <h2 style="margin-top: 0">Payment methods</h2>
                                 </div>
 
@@ -441,7 +441,7 @@
 
                             {{--Order summary--}}
                             <div id="summary_section" class="panel panel_without_border panel-default" hidden>
-                                <div class="panel-heading text-center">
+                                <div class="panel-heading panel-heading-fix text-center">
                                     <h2 style="margin-top: 0">Order summary</h2>
                                 </div>
 

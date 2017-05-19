@@ -7,7 +7,7 @@
             <div class="col-md-10 col-lg-offset-1">
 
                 <div class="panel panel_without_border panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading panel-heading-fix">
                         <img src="{{$product->path_to_image}}" width="80" height="80" style="float: left">
                         <h1 style="margin-left: 90px"><b>{{$product->name}}</b></h1>
                     </div>
@@ -117,7 +117,7 @@
 
                                     <div class="col-sm-5">
                                         <div class="panel panel-review panel-default">
-                                            <div class="panel-heading panel-heading-review">
+                                            <div class="panel-heading panel-heading-fix panel-heading-review">
                                                 <label for="review_text_area"><span class="glyphicon glyphicon-pencil"></span>Write your review below</label>
                                                 <br>
                                                 <u><b class="info">Please write truth to help others make a good purchase</b></u>
@@ -227,7 +227,7 @@
          * Animate from another page
          */
 
-        if (localStorage.length > 0){
+        if (localStorage.getItem('animate') !== null){
 
             if($('#write_review').length != 0) {
                 $('html, body').animate({
