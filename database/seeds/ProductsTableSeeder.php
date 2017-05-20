@@ -78,7 +78,7 @@ class ProductsTableSeeder extends Seeder
 //        }
 
 //        foreach ($subcategories as $subcategory) {
-//            factory(Product::class, 1)->create([
+//            factory(Product::class, 2)->create([
 //                'subcategory_id' => $subcategory->id,
 //                'recommended' => true
 //            ]);

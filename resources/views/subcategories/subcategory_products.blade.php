@@ -63,12 +63,6 @@
                         </div>
                     @endforeach
                 </div>
-
-                {{--<div class="text-center">--}}
-                    {{--<p>Sort: </p>--}}
-
-                {{--</div>--}}
-
             </div>
 
                 <div class="col-sm-10 col-md-10">
