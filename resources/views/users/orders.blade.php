@@ -50,7 +50,8 @@
                                                         <td><strong>Product</strong></td>
                                                         <td class="text-center"><strong>Price</strong></td>
                                                         <td class="text-center"><strong>Quantity</strong></td>
-                                                        <td class="text-right"><strong>Totals</strong></td>
+                                                        <td class="text-center"><strong>Totals</strong></td>
+                                                        <td class="text-right"><strong>Give review</strong></td>
                                                     </tr>
                                                     </thead>
 
@@ -61,6 +62,18 @@
                                                                 <td class="text-center">${{$orderProduct->product->price}}</td>
                                                                 <td class="text-center">{{$orderProduct->quantity}}</td>
                                                                 <td class="text-right">${{$orderProduct->priceForAllItems}}</td>
+
+                                                                <td class="text-right">
+                                                                    {{-- Give a review after you made an order --}}
+                                                                    @if(!Auth::user()->reviews->contains('product_id', $orderProduct->product->id))
+                                                                        <a class="give_review" href="{{ url('/products/'.$orderProduct->product->id) }}" style="margin-left: 20px">
+                                                                            <span class="glyphicon glyphicon-comment"></span><b>Give a review</b>
+                                                                        </a>
+                                                                    @else
+                                                                        {{--You have already gave a review--}}
+                                                                        <span class="glyphicon glyphicon-ok"></span>Done
+                                                                    @endif
+                                                                </td>
                                                             </tr>
                                                         @endforeach
                                                     </tbody>
@@ -94,6 +107,11 @@
                 var id = order_id.split('_')[1];
 
                 $('#order_details_' + id).slideDown();
+            });
+
+            $('.give_review').on('click', function () {
+
+                localStorage.setItem('animate', 'animate');
             })
         })
 

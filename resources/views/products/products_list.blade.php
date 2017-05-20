@@ -1,5 +1,6 @@
 {{-- Pagination links --}}
 {{ $products->links() }}
+<hr>
 
 @foreach($products as $product)
     <div class="item col-xs-4 col-lg-4">
@@ -56,14 +57,6 @@
                                 <span class="glyphicon glyphicon-remove"></span><b>Remove</b>
                             </a>
 
-                        @endif
-
-                        {{--For autheniticated users--}}
-                        @if(Auth::check())
-                            <br>
-                            <a class="give_review" href="{{ url('/products/'.$product->id) }}">
-                                <span class="glyphicon glyphicon-comment"></span><b>Give a review</b>
-                            </a>
                         @endif
                     </div>
                 </div>

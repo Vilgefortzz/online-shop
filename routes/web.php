@@ -96,7 +96,14 @@ Route::group(['prefix' => 'products'], function () {
     Route::get('/{product}', 'ProductController@show');
 });
 
+/**
+ * Subcategories, products, filtration
+ */
+
 Route::get('/subcategories/{subcategory}/products', 'SubcategoryController@showAllProducts');
+Route::get('/subcategories/{subcategory}/products/prices/ascending', 'SubcategoryController@showAllProductsByPriceAscending');
+Route::get('/subcategories/{subcategory}/products/prices/descending', 'SubcategoryController@showAllProductsByPriceDescending');
+
 Route::post('/products/{product}/reviews/add', 'ReviewController@store');
 
 /*

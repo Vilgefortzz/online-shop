@@ -62,13 +62,11 @@
 
                                 @endif
 
-                                {{--For autheniticated users--}}
-                                @if(Auth::check())
                                     <br>
-                                    <a id="give_review_this_page" class="give_review" href="javascript:undefined">
-                                        <span class="glyphicon glyphicon-comment"></span><b>Give a review</b>
+                                    <a id="see_reviews_this_page" class="give_review" href="javascript:undefined">
+                                        <span class="glyphicon glyphicon-comment"></span><b>See reviews</b>
                                     </a>
-                                @endif
+
                             </div>
                         </div>
 
@@ -106,45 +104,51 @@
                 <div id="reviews_section">
                     {{--Autheniticated users can give reviews--}}
                     @if(Auth::check())
-                        @if(!$isGiven)
-                            <div id="write_review">
-                                <div class="row">
-                                    <div class="col-sm-1">
-                                        <div class="thumbnail">
-                                            <b><i>You</i></b>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-5">
-                                        <div class="panel panel-review panel-default">
-                                            <div class="panel-heading panel-heading-fix panel-heading-review">
-                                                <label for="review_text_area"><span class="glyphicon glyphicon-pencil"></span>Write your review below</label>
-                                                <br>
-                                                <u><b class="info">Please write truth to help others make a good purchase</b></u>
+                        @if($isOrdered)
+                            @if(!$isGiven)
+                                <div id="write_review">
+                                    <div class="row">
+                                        <div class="col-sm-1">
+                                            <div class="thumbnail">
+                                                <b><i>You</i></b>
                                             </div>
-                                            <div class="panel-body">
-                                                <form role="form" method="POST" action="{{ url('/products/'.$product->id.'/reviews/add')}}">
-                                                    {{ csrf_field() }}
+                                        </div>
 
-                                                    <div class="form-group{{ $errors->has('review') ? ' has-error' : '' }}" style="margin-bottom: 0">
-                                                        <br>
-                                                        <textarea id="review_text_area" name="review" class="textarea_review" placeholder="Write here!!" required></textarea>
-                                                        @if ($errors->has('review'))
-                                                            <span class="help-block">
+                                        <div class="col-sm-5">
+                                            <div class="panel panel-review panel-default">
+                                                <div class="panel-heading panel-heading-fix panel-heading-review">
+                                                    <label for="review_text_area"><span class="glyphicon glyphicon-pencil"></span>Write your review below</label>
+                                                    <br>
+                                                    <u><b class="info">Please write truth to help others make a good purchase</b></u>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <form role="form" method="POST" action="{{ url('/products/'.$product->id.'/reviews/add')}}">
+                                                        {{ csrf_field() }}
+
+                                                        <div class="form-group{{ $errors->has('review') ? ' has-error' : '' }}" style="margin-bottom: 0">
+                                                            <br>
+                                                            <textarea id="review_text_area" name="review" class="textarea_review" placeholder="Write here!!" required></textarea>
+                                                            @if ($errors->has('review'))
+                                                                <span class="help-block">
                                                                 <strong>{{ $errors->first('review') }}</strong>
                                                             </span>
-                                                        @endif
-                                                    </div>
-                                                    <button class="btn btn-info" type="submit">Post</button>
-                                                </form>
+                                                            @endif
+                                                        </div>
+                                                        <button class="btn btn-info" type="submit">Post</button>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            @else
+                                <div id="review_given">
+                                    <span class="glyphicon glyphicon-ok-sign"></span>You have already given a review to this product.
+                                </div>
+                            @endif
                         @else
-                            <div id="review_given">
-                                <span class="glyphicon glyphicon-ok-sign"></span>You have already given a review to this product.
+                            <div>
+                                <span class="glyphicon glyphicon-info-sign"></span>You cannot give reviews to this product without buying it
                             </div>
                         @endif
                     @endif
@@ -204,23 +208,14 @@
         });
 
         /**
-         * Animate from this page
+         * Animate from this page to reviews section
          */
 
-        $('#give_review_this_page').on('click', function() {
+        $('#see_reviews_this_page').on('click', function() {
 
-            if($('#write_review').length != 0) {
-                $('html, body').animate({
-                    scrollTop: $('#write_review').offset().top - 170
-                }, 800);
-
-                $('#review_text_area').focus();
-            }
-            else{
-                $('html, body').animate({
-                    scrollTop: $('#review_given').offset().top - 170
-                }, 800);
-            }
+            $('html, body').animate({
+                scrollTop: $('#reviews').offset().top - 170
+            }, 800);
         });
 
         /**

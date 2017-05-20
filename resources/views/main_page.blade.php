@@ -32,7 +32,7 @@
         @foreach($categories as $category)
             <ul id="sub_cat_{{$category->id}}" class="sub_cat_menu" hidden>
                 @foreach($category->subcategories as $subcategory)
-                    <li><a href="{{ url('/subcategories/'.$subcategory->id.'/products') }}"><b>{{$subcategory->name}}</b></a></li>
+                    <li id="sub_link_{{$subcategory->id}}"><a href="{{ url('/subcategories/'.$subcategory->id.'/products') }}"><b>{{$subcategory->name}}</b></a></li>
                 @endforeach
             </ul>
         @endforeach
@@ -129,14 +129,6 @@
                                         </a>
 
                                     @endif
-
-                                    {{--For autheniticated users--}}
-                                    @if(Auth::check())
-                                        <br>
-                                        <a class="give_review" href="{{ url('/products/'.$recommendedProduct->id) }}">
-                                            <span class="glyphicon glyphicon-comment"></span><b>Give a review</b>
-                                        </a>
-                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -168,13 +160,11 @@
             $('#sub_cat_' + id).fadeIn();
         });
 
-        /**
-         * Animate from another page - set
-         */
+        $('.sub_cat_menu').on('click', function () {
 
-        $('.give_review').on('click', function () {
-            localStorage.setItem('animate', 'animate');
-        })
+            var id = $(this).find('li').attr('id');
+            localStorage.setItem('active_link', id);
+        });
 
     </script>
 

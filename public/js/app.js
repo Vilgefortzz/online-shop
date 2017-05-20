@@ -11242,7 +11242,6 @@ var app = new Vue({
 
 __webpack_require__(35);
 __webpack_require__(34);
-__webpack_require__(31);
 __webpack_require__(32);
 
 /**
@@ -12128,17 +12127,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 31 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function($) {var url = window.location;
-
-$('td a').filter(function () {
-    return this.href == url;
-}).parent().addClass('active').css('backgroundColor', '#b4b37a');
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
+/* 31 */,
 /* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 

@@ -20,4 +20,30 @@ class SubcategoryController extends Controller
         }
         return view('subcategories.subcategory_products', compact('categories','category','subcategory','products'));
     }
+
+    public function showAllProductsByPriceAscending(Subcategory $subcategory, Request $request){
+
+        $categories = Category::all();
+        $category = $subcategory->category;
+        $products = Product::where('subcategory_id', $subcategory->id)
+            ->orderBy('price', 'asc')->paginate(3);
+
+        if ($request->ajax()) {
+            return view('products.products_list', compact('products'))->render();
+        }
+        return view('subcategories.subcategory_products', compact('categories','category','subcategory','products'));
+    }
+
+    public function showAllProductsByPriceDescending(Subcategory $subcategory, Request $request){
+
+        $categories = Category::all();
+        $category = $subcategory->category;
+        $products = Product::where('subcategory_id', $subcategory->id)
+            ->orderBy('price', 'desc')->paginate(3);
+
+        if ($request->ajax()) {
+            return view('products.products_list', compact('products'))->render();
+        }
+        return view('subcategories.subcategory_products', compact('categories','category','subcategory','products'));
+    }
 }
