@@ -41,6 +41,39 @@
                     <p><span class="glyphicon glyphicon-earphone"></span><b> Phone (Poland) : +48 000 000 000</b></p>
                 </div>
             </div>
+
+            {{--Subscribe to newsletter--}}
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <div class="text-center center-block">
+                    <div class="row">
+                        <div class="center well well-sm text-center">
+                            <h2>Newsletter</h2>
+
+                            <p>Subscribe to our weekly Newsletter and stay tuned.</p>
+
+                            <form role="form" action="{{ url('/subscribe') }}" method="POST">
+                                {{csrf_field()}}
+                                <div class="input-group form-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                                    <input id="email" name="email" class="form-control" type="text" placeholder="your@email.com" required>
+                                </div>
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        </span>
+                                @endif
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-default" style="margin-top: 10px">Subscribe</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </footer>

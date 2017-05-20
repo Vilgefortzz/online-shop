@@ -121,3 +121,8 @@ Route::get('/aboutUs', function () {
 Route::get('/termsAndConditions', function () {
     return view('info.terms_and_conditions');
 });
+
+/**
+ * Newsletter subscribe
+ */
+Route::post('/subscribe', 'SubscribeController@store');

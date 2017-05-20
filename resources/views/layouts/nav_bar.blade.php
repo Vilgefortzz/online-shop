@@ -45,6 +45,10 @@
                         <div class="alert alert-danger flash-message text-center">{{ Session::get('removed_account') }}</div>
                     @endif
 
+                    @if(Session::has('subscribed'))
+                        <div class="alert alert-success flash-message text-center">{{ Session::get('subscribed') }}</div>
+                    @endif
+
                     {{--AJAX flash messages--}}
                     <div id="added_to_cart" class="alert alert-success flash-message" hidden>Added new product</div>
                     <div id="removed_from_cart" class="alert alert-danger flash-message" hidden>Removed product</div>

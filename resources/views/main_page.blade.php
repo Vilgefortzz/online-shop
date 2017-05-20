@@ -67,43 +67,47 @@
         {{--Horizontal line--}}
         <hr>
 
-        <!-- Recommended products slider-->
-        <div class="row" style="margin-top: 30px; margin-bottom: 30px">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="carousel carousel-showmanymoveone slide" id="itemslider">
-                    <div class="carousel-inner">
+        @if(count($recommendedProducts) > 0)
+            <div id="recommended_products_section">
+                <!-- Recommended products slider-->
+                <div class="row" style="margin-top: 30px; margin-bottom: 30px">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="carousel carousel-showmanymoveone slide" id="itemslider">
+                            <div class="carousel-inner">
 
-                        @foreach($recommendedProducts as $recommendedProduct)
-                            @if($recommendedProducts->first() == $recommendedProduct)
-                                <div class="item active">
-                                    <div class="col-xs-12 col-sm-6 col-md-2">
-                                        <a href="{{ url('/products/'.$recommendedProduct->id) }}"><img src="{{$recommendedProduct->path_to_image}}" class="img-responsive center-block"></a>
-                                        <h4 class="text-center">{{$recommendedProduct->name}}</h4>
-                                        <h5 class="text-center" style="color: darkred">${{$recommendedProduct->price}}</h5>
-                                    </div>
-                                </div>
-                            @else
-                                <div class="item">
-                                    <div class="col-xs-12 col-sm-6 col-md-2">
-                                        <a href="{{ url('/products/'.$recommendedProduct->id) }}"><img src="{{$recommendedProduct->path_to_image}}" class="img-responsive center-block"></a>
-                                        <h4 class="text-center">{{$recommendedProduct->name}}</h4>
-                                        <h5 class="text-center" style="color: darkred">${{$recommendedProduct->price}}</h5>
-                                    </div>
-                                </div>
-                            @endif
-                        @endforeach
-                    </div>
+                                @foreach($recommendedProducts as $recommendedProduct)
+                                    @if($recommendedProducts->first() == $recommendedProduct)
+                                        <div class="item active">
+                                            <div class="col-xs-12 col-sm-6 col-md-2">
+                                                <a href="{{ url('/products/'.$recommendedProduct->id) }}"><img src="{{$recommendedProduct->path_to_image}}" class="img-responsive center-block"></a>
+                                                <h4 class="text-center">{{$recommendedProduct->name}}</h4>
+                                                <h5 class="text-center" style="color: darkred">${{$recommendedProduct->price}}</h5>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="item">
+                                            <div class="col-xs-12 col-sm-6 col-md-2">
+                                                <a href="{{ url('/products/'.$recommendedProduct->id) }}"><img src="{{$recommendedProduct->path_to_image}}" class="img-responsive center-block"></a>
+                                                <h4 class="text-center">{{$recommendedProduct->name}}</h4>
+                                                <h5 class="text-center" style="color: darkred">${{$recommendedProduct->price}}</h5>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
 
-                    <div id="slider-control">
-                        <a class="left carousel-control" href="#itemslider" data-slide="prev"><img src="https://s12.postimg.org/uj3ffq90d/arrow_left.png" alt="Left" class="img-responsive" aria-hidden="true"></a>
-                        <a class="right carousel-control" href="#itemslider" data-slide="next"><img src="https://s12.postimg.org/djuh0gxst/arrow_right.png" alt="Right" class="img-responsive" aria-hidden="true"></a>
+                            <div id="slider-control">
+                                <a class="left carousel-control" href="#itemslider" data-slide="prev"><img src="https://s12.postimg.org/uj3ffq90d/arrow_left.png" alt="Left" class="img-responsive" aria-hidden="true"></a>
+                                <a class="right carousel-control" href="#itemslider" data-slide="next"><img src="https://s12.postimg.org/djuh0gxst/arrow_right.png" alt="Right" class="img-responsive" aria-hidden="true"></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        {{--Horizontal line--}}
-        <hr>
+                {{--Horizontal line--}}
+                <hr>
+            </div>
+        @endif
     </div>
 
     {{-- AJAX scripts--}}
