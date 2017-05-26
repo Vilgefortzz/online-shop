@@ -36,10 +36,14 @@
                                         {{--Hidden content - order details--}}
 
                                         <div id="order_details_{{$order->id}}" style="margin-top: 15px" hidden>
-                                            <strong><span class="glyphicon glyphicon-plane"></span>Delivery method: </strong>{{ $order->delivery_method }}
+                                            <strong><span class="glyphicon glyphicon-plane"></span>Delivery method: </strong>{{ $order->delivery->name }}
                                             <br>
-                                            <strong><span class="glyphicon glyphicon-credit-card"></span>Payment method: </strong>{{ $order->payment_method }}
+                                            <strong><span class="glyphicon glyphicon-usd"></span>Price for delivery: </strong>${{ $order->delivery->price }}
                                             <br>
+                                            <strong><span class="glyphicon glyphicon-credit-card"></span>Payment method: </strong>{{ $order->payment->name }}
+                                            <br>
+                                            <strong><span class="glyphicon glyphicon-gift"></span>Discount for having account: </strong>${{ $order->user->discount }}
+                                            <hr>
                                             <strong><span class="glyphicon glyphicon-usd"></span>Total paid: </strong>${{number_format($order->total_paid, 2, '.', '')}}
                                             <br><br>
 
@@ -61,7 +65,7 @@
                                                                 <td>{{$orderProduct->product->name}}</td>
                                                                 <td class="text-center">${{$orderProduct->product->price}}</td>
                                                                 <td class="text-center">{{$orderProduct->quantity}}</td>
-                                                                <td class="text-right">${{$orderProduct->priceForAllItems}}</td>
+                                                                <td class="text-center">${{$orderProduct->priceForAllItems}}</td>
 
                                                                 <td class="text-right">
                                                                     {{-- Give a review after you made an order --}}

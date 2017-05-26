@@ -41,22 +41,6 @@
                                         <b><span id="money" style="color: #720d18">${{number_format($totalPrice, 2, '.', '')}}</span></b>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="no-line"></td>
-                                    <td class="no-line"></td>
-                                    <td class="no-line text-center"><strong>Shipping</strong></td>
-                                    <td class="no-line text-right">
-                                        <b style="color: #134114">$0</b>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="no-line"></td>
-                                    <td class="no-line"></td>
-                                    <td class="no-line text-center"><strong>Total</strong></td>
-                                    <td class="no-line text-right">
-                                        <b><span style="color: #040648">${{number_format($totalPrice, 2, '.', '')}}</span></b>
-                                    </td>
-                                </tr>
                                 </tbody>
                             </table>
                         </div>

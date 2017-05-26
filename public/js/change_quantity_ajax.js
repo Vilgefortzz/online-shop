@@ -84,7 +84,7 @@ $(document).ready(function() {
                 $('#price_product_all_' + data.product.id).text(newMoneyProductAll + '$').delay(500).fadeIn();
 
                 $('#money').hide();
-                $('#money').text(newTotalMoney + '$').delay(500).fadeIn();
+                $('#money').text('$' + newTotalMoney).delay(500).fadeIn();
 
                 var quantityString = $('#quantity_product_' + data.product.id);
 

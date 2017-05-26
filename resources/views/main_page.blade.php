@@ -42,12 +42,6 @@
 
         {{--Deals, promotions etc.--}}
         <div id="carousel" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carousel" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel" data-slide-to="1" class="active"></li>
-                <li data-target="#carousel" data-slide-to="2" class="active"></li>
-            </ol>
-
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
                     <h3><span class="glyphicon glyphicon-globe"></span>The best fighting and defending equipment in the world</h3>
@@ -97,8 +91,8 @@
                             </div>
 
                             <div id="slider-control">
-                                <a class="left carousel-control" href="#itemslider" data-slide="prev"><img src="https://s12.postimg.org/uj3ffq90d/arrow_left.png" alt="Left" class="img-responsive" aria-hidden="true"></a>
-                                <a class="right carousel-control" href="#itemslider" data-slide="next"><img src="https://s12.postimg.org/djuh0gxst/arrow_right.png" alt="Right" class="img-responsive" aria-hidden="true"></a>
+                                <a class="left carousel-control" href="#itemslider" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                                <a class="right carousel-control" href="#itemslider" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
                             </div>
                         </div>
                     </div>
@@ -118,6 +112,8 @@
     <script type="text/javascript">
 
         $(document).ready(function(){
+
+            localStorage.clear();
 
             /**
              * Subcategory menu from main page

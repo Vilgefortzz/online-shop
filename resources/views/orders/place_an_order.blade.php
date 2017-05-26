@@ -394,19 +394,16 @@
 
                                 <div class="panel-body">
                                     <div class="text-center" style="margin-bottom: 40px">
-
                                         <div class="cc-selector">
-                                            <input id="inpost_courier" type="radio" name="delivery_methods" checked="checked" value="InPost courier" data-text="InPost courier">
-                                            <label class="radio_nice inpost_courier" for="inpost_courier"></label>
-
-                                            <input id="inpost_paczkomat" type="radio" name="delivery_methods" value="InPost paczkomat" data-text="InPost paczkomat">
-                                            <label class="radio_nice inpost_paczkomat" for="inpost_paczkomat"></label>
-
-                                            <input id="ups" type="radio" name="delivery_methods" value="UPS courier" data-text="UPS courier">
-                                            <label class="radio_nice ups" for="ups"></label>
-
-                                            <input id="poczta_polska" type="radio" name="delivery_methods" value="Poczta polska courier" data-text="Poczta polska courier">
-                                            <label class="radio_nice poczta_polska" for="poczta_polska"></label>
+                                            @foreach($deliveries as $delivery)
+                                                @if($deliveries->first() == $delivery)
+                                                    <input id="{{$delivery->name}}" type="radio" name="delivery_methods" checked="checked" value="{{$delivery->id}}" data-delivery-price="{{$delivery->price}}">
+                                                    <label class="radio_nice" for="{{$delivery->name}}" style="background-image: url('{{$delivery->path_to_image}}')"></label>
+                                                @else
+                                                    <input id="{{$delivery->name}}" type="radio" name="delivery_methods" value="{{$delivery->id}}" data-delivery-price="{{$delivery->price}}">
+                                                    <label class="radio_nice" for="{{$delivery->name}}" style="background-image: url('{{$delivery->path_to_image}}')"></label>
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -421,13 +418,16 @@
 
                                 <div class="panel-body">
                                     <div class="text-center" style="margin-bottom: 40px">
-
                                         <div class="cc-selector">
-                                            <input id="credit_card" type="radio" name="payment_methods" checked="checked" value="Credit card" data-text="Credit card">
-                                            <label class="radio_nice credit_card" for="credit_card"></label>
-
-                                            <input id="usual_transfer" type="radio" name="payment_methods" value="Traditional transfer" data-text="Traditional transfer">
-                                            <label class="radio_nice usual_transfer" for="usual_transfer"></label>
+                                            @foreach($payments as $payment)
+                                                @if($payments->first() == $payment)
+                                                    <input id="{{$payment->name}}" type="radio" name="payment_methods" checked="checked" value="{{$payment->id}}" data-payment-name="{{$payment->name}}">
+                                                    <label class="radio_nice" for="{{$payment->name}}" style="background-image: url('{{$payment->path_to_image}}')"></label>
+                                                @else
+                                                    <input id="{{$payment->name}}" type="radio" name="payment_methods" value="{{$payment->id}}" data-payment-name="{{$payment->name}}">
+                                                    <label class="radio_nice" for="{{$payment->name}}" style="background-image: url('{{$payment->path_to_image}}')"></label>
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -475,7 +475,7 @@
                                                     <td class="thick-line"></td>
                                                     <td class="thick-line text-center"><strong>Subtotal</strong></td>
                                                     <td class="thick-line text-right">
-                                                        <b><span id="money" style="color: #720d18">${{number_format($totalPrice, 2, '.', '')}}</span></b>
+                                                        <b><span id="subtotal" style="color: #720d18">${{number_format($totalPrice, 2, '.', '')}}</span></b>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -483,7 +483,21 @@
                                                     <td class="no-line"></td>
                                                     <td class="no-line text-center"><strong>Shipping</strong></td>
                                                     <td class="no-line text-right">
-                                                        <b style="color: #134114">$0</b>
+                                                        <b id="shipping" style="color: #134114"></b>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="no-line"></td>
+                                                    <td class="no-line"></td>
+                                                    <td class="no-line text-center"><strong>Discount</strong></td>
+                                                    <td class="no-line text-right">
+                                                        <b id="discount" style="color: #d77c1f">
+                                                            @if(Auth::check())
+                                                                ${{Auth::user()->discount}}
+                                                            @else
+                                                                $0
+                                                            @endif
+                                                        </b>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -491,7 +505,7 @@
                                                     <td class="no-line"></td>
                                                     <td class="no-line text-center"><strong>Total</strong></td>
                                                     <td class="no-line text-right">
-                                                        <b><span style="color: #040648">${{number_format($totalPrice, 2, '.', '')}}</span></b>
+                                                        <b id="total_paid_for_order" style="color: #040648">${{number_format($totalPrice, 2, '.', '')}}</b>
                                                     </td>
                                                 </tr>
                                                 </tbody>
@@ -512,6 +526,7 @@
 
                                             <hr>
                                             <p><span class="glyphicon glyphicon-plane"></span>Chosen delivery method: <span id="delivery_method_summary" style="font-style: italic; text-decoration: underline; color: darkred"></span></p>
+                                            <p><span class="glyphicon glyphicon-usd"></span>Price for delivery: <span id="delivery_method_summary_price" style="font-style: italic; text-decoration: underline; color: darkred"></span></p>
                                             <p><span class="glyphicon glyphicon-credit-card"></span>Chosen payment method: <span id="payment_method_summary" style="font-style: italic; text-decoration: underline; color: darkred"></span></p>
                                         </b>
                                     </div>

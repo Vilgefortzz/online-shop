@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Delivery;
 use App\Order;
 use App\OrderProduct;
+use App\Payment;
 use App\Product;
 use Auth;
 use Illuminate\Http\Request;
@@ -33,7 +35,13 @@ class OrderController extends Controller
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
 
-        return view('orders.place_an_order', ['products' => $cart->products, 'totalPrice' => $cart->totalPrice]);
+        // Delivery methods
+        $deliveries = Delivery::all();
+
+        // Payment methods
+        $payments = Payment::all();
+
+        return view('orders.place_an_order', ['products' => $cart->products, 'totalPrice' => $cart->totalPrice, 'deliveries' => $deliveries, 'payments' => $payments]);
     }
 
     public function store(Request $request){
@@ -65,13 +73,24 @@ class OrderController extends Controller
         // Create order
         $order = new Order();
 
+        $discount = 0;
+
         if (Auth::check()){
             $order->user_id = Auth::user()->id;
+            $discount = Auth::user()->discount;
         }
 
-        $order->total_paid = $cart->totalPrice;
-        $order->delivery_method = $request->delivery_methods;
-        $order->payment_method = $request->payment_methods;
+        $order->delivery_id = $request->delivery_methods;
+        $order->payment_id = $request->payment_methods;
+
+        $delivery = Delivery::find($order->delivery_id);
+
+        // Total paid for order
+        $totalPriceForProducts = $cart->totalPrice;
+        $shipping = $delivery->price;
+        $totalPaidForOrder = $totalPriceForProducts + $shipping - $discount;
+
+        $order->total_paid = $totalPaidForOrder;
         $order->status = "Pending";
         $order->save();
 

@@ -16,7 +16,7 @@ $(document).ready(function(){
                 $('#street').attr('value', data.street);
                 $('#postal_code').attr('value', data.postal_code);
                 $('#city').attr('value', data.city);
-                $('#country').attr('value', data.country);
+                $('#country').val(data.country);
                 $('#phone_number').attr('value', data.phone_number);
             }
         });
@@ -40,13 +40,8 @@ $(document).ready(function(){
         $('#country').attr('disabled', false);
         $('#phone_number').attr('disabled', false);
 
-        $('#inpost_courier').attr('disabled', false);
-        $('#inpost_paczkomat').attr('disabled', false);
-        $('#ups').attr('disabled', false);
-        $('#poczta_polska').attr('disabled', false);
-
-        $('#credit_card').attr('disabled', false);
-        $('#usual_transfer').attr('disabled', false);
+        $('input[name=delivery_methods]').attr('disabled', false);
+        $('input[name=payment_methods]').attr('disabled', false);
 
         $('#fill_form').show();
 
@@ -75,12 +70,25 @@ $(document).ready(function(){
         $('#phone_number_summary').text($('#phone_number').val());
 
         // Retrive current delivery method
-
-        $('#delivery_method_summary').text($('input[name=delivery_methods]:checked').attr('data-text'));
+        $('#delivery_method_summary').text($('input[name=delivery_methods]:checked').attr('id'));
 
         // Retrive current payment method
+        $('#payment_method_summary').text($('input[name=payment_methods]:checked').attr('id'));
 
-        $('#payment_method_summary').text($('input[name=payment_methods]:checked').attr('data-text'));
+        // Price for delivery
+        $('#delivery_method_summary_price').text('$' + $('input[name=delivery_methods]:checked').attr('data-delivery-price'));
+
+        // Price for delivery
+        $('#shipping').text('$' + $('input[name=delivery_methods]:checked').attr('data-delivery-price'));
+
+        // Total paid for order after shipping costs and discounts
+        var totalForProducts = parseFloat($('#subtotal').text().split('$')[1]);
+        var shipping = parseFloat($('#shipping').text().split('$')[1]);
+        var discount = parseFloat($('#discount').text().split('$')[1]);
+        var totalPaidForOrder = totalForProducts - shipping + discount;
+
+        // Total paid for order
+        $('#total_paid_for_order').text('$' + totalPaidForOrder);
 
         $('#summary_section').fadeIn('4000');
 
@@ -98,13 +106,8 @@ $(document).ready(function(){
         $('#country').attr('disabled', true);
         $('#phone_number').attr('disabled', true);
 
-        $('#inpost_courier').attr('disabled', true);
-        $('#inpost_paczkomat').attr('disabled', true);
-        $('#ups').attr('disabled', true);
-        $('#poczta_polska').attr('disabled', true);
-
-        $('#credit_card').attr('disabled', true);
-        $('#usual_transfer').attr('disabled', true);
+        $('input[name=delivery_methods]').attr('disabled', true);
+        $('input[name=payment_methods]').attr('disabled', true);
 
         $('#fill_form').hide();
 
@@ -141,12 +144,7 @@ $(document).ready(function(){
         $('#country').attr('disabled', false);
         $('#phone_number').attr('disabled', false);
 
-        $('#inpost_courier').attr('disabled', false);
-        $('#inpost_paczkomat').attr('disabled', false);
-        $('#ups').attr('disabled', false);
-        $('#poczta_polska').attr('disabled', false);
-
-        $('#credit_card').attr('disabled', false);
-        $('#usual_transfer').attr('disabled', false);
+        $('input[name=delivery_methods]').attr('disabled', false);
+        $('input[name=payment_methods]').attr('disabled', false);
     });
 });

@@ -15,4 +15,14 @@ class Order extends Model
     {
         return $this->hasMany('App\OrderProduct');
     }
+
+    public function delivery()
+    {
+        return $this->belongsTo('App\Delivery');
+    }
+
+    public function payment()
+    {
+        return $this->belongsTo('App\Payment');
+    }
 }

@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('city')->nullable();
             $table->string('country')->nullable();
             $table->string('phone_number')->nullable();
+            $table->float('discount')->unsigned()->default('20');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -57,3 +57,19 @@ $factory->define(App\Review::class, function (Faker\Generator $faker) {
         'review' => $faker->text(500),
     ];
 });
+
+$factory->define(App\Delivery::class, function (Faker\Generator $faker) {
+
+    return [
+        'name' => $faker->unique()->word,
+        'price' => $faker->randomFloat(2, 5, 20)
+    ];
+});
+
+
+$factory->define(App\Payment::class, function (Faker\Generator $faker) {
+
+    return [
+        'name' => $faker->unique()->word
+    ];
+});
