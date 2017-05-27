@@ -30,4 +30,30 @@ class ProductController extends Controller
 
         return view('products.product_details', compact('product', 'reviews'));
     }
+
+    public function search(Request $request){
+
+        if ($request->ajax()){
+
+            $output = '';
+            $products = Product::where('name', 'LIKE', $request->value.'%')->get();
+
+            if (count($products) != 0){
+                foreach ($products as $product){
+
+                    $output .= '<li>'.
+                                '<a href="/products/'.$product->id.'" class = "nice_links">'.
+                                    '<img src="'.$product->path_to_image.'" width="50" height="50">'.
+                                    '<b>'.$product->name.'</b>'.
+                                '</a>'.
+                               '</li>';
+                }
+            }
+            else{
+                $output = '<h4 class="text-center">Product not found...</h4>';
+            }
+
+            return response($output);
+        }
+    }
 }

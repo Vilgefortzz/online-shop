@@ -26,6 +26,7 @@ const app = new Vue({
 require('./hover_menu');
 require('./hide_flash_messages');
 require('./ajax_config');
+require('./search');
 
 /**
  * Active tooltip - show etc.

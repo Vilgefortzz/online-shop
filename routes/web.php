@@ -93,6 +93,11 @@ Route::group(['prefix' => 'users'], function () {
  */
 Route::group(['prefix' => 'products'], function () {
 
+    /**
+     * Search products
+     */
+    Route::get('/search', 'ProductController@search');
+
     Route::get('/{product}', 'ProductController@show');
 });
 

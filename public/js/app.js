@@ -11243,6 +11243,7 @@ var app = new Vue({
 __webpack_require__(34);
 __webpack_require__(33);
 __webpack_require__(31);
+__webpack_require__(51);
 
 /**
  * Active tooltip - show etc.
@@ -41167,6 +41168,50 @@ module.exports = function(module) {
 __webpack_require__(10);
 module.exports = __webpack_require__(11);
 
+
+/***/ }),
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {$(function () {
+
+    $('#search_link').on('click', function (e) {
+        e.preventDefault();
+
+        $('#search_input').val('');
+        setTimeout(function () {
+            $('#search_input').focus();
+        }, 10);
+        $('#searched_products').empty();
+    });
+
+    $('#search_input').on('keyup', function () {
+
+        var value = $(this).val();
+        var url = $(this).attr('href');
+
+        if (value !== '') {
+            $.ajax({
+                type: 'GET',
+                url: url,
+                data: { value: value },
+
+                success: function success(data) {
+                    $('#searched_products').html(data);
+                }
+            });
+        } else $('#searched_products').empty();
+    });
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ })
 /******/ ]);

@@ -135,6 +135,20 @@
                         </ul>
                     </li>
                 @endif
+
+            <!-- Search products -->
+                <li id="search_section" class="dropdown">
+                    <a id="search_link" href="#toogle-search" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </a>
+
+                    <ul id="search_menu" class="dropdown-menu" role="menu">
+                        <li style="margin-bottom: 15px">
+                            <input id="search_input" type="text" name="search" href="{{ url('/products/search') }}" class="form-control" placeholder="Type here to search product..." style="border: none;">
+                        </li>
+                        <div id="searched_products"></div>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
