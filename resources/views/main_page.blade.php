@@ -73,7 +73,7 @@
                                     @if($recommendedProducts->first() == $recommendedProduct)
                                         <div class="item active">
                                             <div class="col-xs-12 col-sm-6 col-md-2">
-                                                <a href="{{ url('/products/'.$recommendedProduct->id) }}"><img src="{{$recommendedProduct->path_to_image}}" class="img-responsive center-block"></a>
+                                                <a href="{{ url('/products/'.$recommendedProduct->id) }}"><img src="{{$recommendedProduct->path_to_thumbnail}}" class="img-responsive center-block"></a>
                                                 <h4 class="text-center">{{$recommendedProduct->name}}</h4>
                                                 <h5 class="text-center" style="color: darkred">${{$recommendedProduct->price}}</h5>
                                             </div>
@@ -81,7 +81,7 @@
                                     @else
                                         <div class="item">
                                             <div class="col-xs-12 col-sm-6 col-md-2">
-                                                <a href="{{ url('/products/'.$recommendedProduct->id) }}"><img src="{{$recommendedProduct->path_to_image}}" class="img-responsive center-block"></a>
+                                                <a href="{{ url('/products/'.$recommendedProduct->id) }}"><img src="{{$recommendedProduct->path_to_thumbnail}}" class="img-responsive center-block"></a>
                                                 <h4 class="text-center">{{$recommendedProduct->name}}</h4>
                                                 <h5 class="text-center" style="color: darkred">${{$recommendedProduct->price}}</h5>
                                             </div>

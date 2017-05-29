@@ -85,7 +85,7 @@ $(document).ready(function(){
         var totalForProducts = parseFloat($('#subtotal').text().split('$')[1]);
         var shipping = parseFloat($('#shipping').text().split('$')[1]);
         var discount = parseFloat($('#discount').text().split('$')[1]);
-        var totalPaidForOrder = totalForProducts - shipping + discount;
+        var totalPaidForOrder = totalForProducts + shipping - discount;
 
         // Total paid for order
         $('#total_paid_for_order').text('$' + totalPaidForOrder);

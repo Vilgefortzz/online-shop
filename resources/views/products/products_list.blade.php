@@ -5,7 +5,7 @@
 @foreach($products as $product)
     <div class="item col-xs-4 col-lg-4">
         <div class="thumbnail">
-            <img class="group list-group-image" src="{{$product->path_to_image}}" width="200" height="200"/>
+            <img class="group list-group-image" src="{{$product->path_to_thumbnail}}" width="200" height="200"/>
             <div class="caption">
                 <h2 class="group inner list-group-item-heading">
                     <b>

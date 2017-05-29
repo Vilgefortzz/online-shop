@@ -15,6 +15,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/smoothproducts/smoothproducts.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -22,9 +23,6 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
-
-    {{-- Font avesome to social links --}}
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- jQuery -->
     <script src = "{{ asset('js/jquery/jquery.min.js') }}"></script>

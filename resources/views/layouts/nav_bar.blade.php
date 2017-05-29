@@ -74,8 +74,8 @@
                             @else
                                 @foreach(Session::get('cart')->products as $product)
                                     <li>
-                                        <a href="#">
-                                            <img src="{{$product['product']['path_to_image']}}" width="30" height="30">
+                                        <a href="{{ url('/products/'.$product['id']) }}">
+                                            <img src="{{$product['product']['path_to_thumbnail']}}" width="30" height="30">
                                             <b>{{$product['product']['name']}}</b>
                                         </a>
                                     </li>

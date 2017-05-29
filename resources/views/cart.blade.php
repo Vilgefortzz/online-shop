@@ -16,7 +16,7 @@
                                     <li id="cart_product_{{$product['id']}}" class="list-group-item clearfix">
                                         <div id="product{{$product['id']}}_quantity">
 
-                                            <img src="{{$product['product']['path_to_image']}}" width="50" height="50">
+                                            <img src="{{$product['product']['path_to_thumbnail']}}" width="50" height="50">
 
                                             <b>{{$product['product']['name']}}</b>
 

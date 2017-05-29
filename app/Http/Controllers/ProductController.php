@@ -14,6 +14,9 @@ class ProductController extends Controller
         // Get all reviews for this product and sort reviews by date from the newest one
         $reviews = Review::where('product_id', $product->id)->orderBy('created_at', 'desc')->paginate(2);
 
+        // Get all images( gallery ) for this product
+        $images = $product->images;
+
         // Check if has user already given a review to this product and if has user ordered this product
         if (Auth::check()){
 
@@ -25,10 +28,10 @@ class ProductController extends Controller
                     $isOrdered = true;
                 }
             }
-            return view('products.product_details', compact('product', 'isGiven', 'isOrdered', 'reviews'));
+            return view('products.product_details', compact('product', 'images', 'isGiven', 'isOrdered', 'reviews'));
         }
 
-        return view('products.product_details', compact('product', 'reviews'));
+        return view('products.product_details', compact('product', 'images', 'reviews'));
     }
 
     public function search(Request $request){
@@ -43,7 +46,7 @@ class ProductController extends Controller
 
                     $output .= '<li>'.
                                 '<a href="/products/'.$product->id.'" class = "nice_links">'.
-                                    '<img src="'.$product->path_to_image.'" width="50" height="50">'.
+                                    '<img src="'.$product->path_to_thumbnail.'" width="50" height="50">'.
                                     '<b>'.$product->name.'</b>'.
                                 '</a>'.
                                '</li>';

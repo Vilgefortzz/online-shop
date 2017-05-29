@@ -73,3 +73,9 @@ $factory->define(App\Payment::class, function (Faker\Generator $faker) {
         'name' => $faker->unique()->word
     ];
 });
+
+$factory->define(App\Image::class, function (Faker\Generator $faker) {
+
+    return [
+    ];
+});
