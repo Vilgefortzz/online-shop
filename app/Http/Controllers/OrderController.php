@@ -49,7 +49,6 @@ class OrderController extends Controller
         /*
          * Validate data
          */
-
         $this->validate($request, [
             'email' => 'required|email|max:255',
             'first_name' => 'required|min:3|max:30',
@@ -72,6 +71,16 @@ class OrderController extends Controller
 
         // Create order
         $order = new Order();
+
+        // Fill essential data
+        $order->email = $request->email;
+        $order->first_name = $request->first_name;
+        $order->last_name = $request->last_name;
+        $order->street = $request->street;
+        $order->postal_code = $request->postal_code;
+        $order->city = $request->city;
+        $order->country = $request->country;
+        $order->phone_number = $request->phone_number;
 
         $discount = 0;
 

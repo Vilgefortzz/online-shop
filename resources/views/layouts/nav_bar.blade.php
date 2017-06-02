@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fix navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
 
@@ -101,7 +101,7 @@
 
                 <!-- Authentication Links -->
                     <li class="dropdown dropdown-dynamic">
-                        <a href="#">
+                        <a href="#" onclick="event.preventDefault();">
                             <span class="glyphicon glyphicon-user"></span>{{ Auth::user()->username }}
                         </a>
 
@@ -135,6 +135,15 @@
                         </ul>
                     </li>
                 @endif
+
+            <!-- Admin panel link -->
+            @if(Auth::check() && Auth::user()->admin)
+                    <li>
+                        <a href="{{ url('/admin') }}">
+                            <span class="glyphicon glyphicon-wrench"></span>Admin panel
+                        </a>
+                    </li>
+            @endif
 
             <!-- Search products -->
                 <li id="search_section" class="dropdown">

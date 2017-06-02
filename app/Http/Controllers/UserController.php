@@ -38,6 +38,33 @@ class UserController extends Controller
         return view('users.orders', compact('orders'));
     }
 
+    public function showPreparingToSendOrders(User $user){
+
+        $orders = Order::where('user_id', $user->id)
+            ->where('status', 'Preparing to send')
+            ->orderBy('created_at', 'desc')->paginate(2);
+
+        return view('users.orders', compact('orders'));
+    }
+
+    public function showWaitingForPaymentOrders(User $user){
+
+        $orders = Order::where('user_id', $user->id)
+            ->where('status', 'Waiting for payment')
+            ->orderBy('created_at', 'desc')->paginate(2);
+
+        return view('users.orders', compact('orders'));
+    }
+
+    public function showSendOrders(User $user){
+
+        $orders = Order::where('user_id', $user->id)
+            ->where('status', 'Send')
+            ->orderBy('created_at', 'desc')->paginate(2);
+
+        return view('users.orders', compact('orders'));
+    }
+
     public function showCompletedOrders(User $user){
 
         $orders = Order::where('user_id', $user->id)

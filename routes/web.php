@@ -53,6 +53,32 @@ Route::post('/placeAnOrder', 'OrderController@store');
  */
 Route::get('/madeAnOrder', 'OrderController@showMadeAnOrder');
 
+/**
+ * Admin routes, protected by middleware
+ */
+Route::group(['namespace' => 'Admin', 'middleware' => 'admin', 'prefix'=>'admin'], function () {
+
+    Route::get('/', function (){
+        return view('admin.main_page');
+    });
+
+    Route::get('/users', 'UserController@index');
+    Route::get('/products', 'ProductController@index');
+    Route::get('/orders', 'OrderController@index');
+    Route::get('/orders/pending', 'OrderController@indexPending');
+    Route::get('/orders/preparingToSend', 'OrderController@indexPreparingToSend');
+    Route::get('/orders/waitingForPayment', 'OrderController@indexWaitingForPayment');
+    Route::get('/orders/send', 'OrderController@indexSend');
+    Route::get('/orders/completed', 'OrderController@indexCompleted');
+
+    /**
+     * Change orders status
+     */
+    Route::put('/orders/{order}/update/status', 'OrderController@updateStatus');
+
+});
+
+
 /*
  * User Routes
  */
@@ -84,6 +110,9 @@ Route::group(['prefix' => 'users'], function () {
      */
 
     Route::get('/{user}/orders/pending', 'UserController@showPendingOrders');
+    Route::get('/{user}/orders/preparingToSend', 'UserController@showPreparingToSendOrders');
+    Route::get('/{user}/orders/waitingForPayment', 'UserController@showWaitingForPaymentOrders');
+    Route::get('/{user}/orders/send', 'UserController@showSendOrders');
     Route::get('/{user}/orders/completed', 'UserController@showCompletedOrders');
 
 });

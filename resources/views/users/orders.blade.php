@@ -11,12 +11,15 @@
                     <div class="btn-group pull-right">
                         <div class="btn-group">
                             <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                Filter history <i class="fa fa-filter"></i>
+                                Filter order history <i class="fa fa-filter"></i>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="{{ url('/users/'.Auth::user()->id.'/orders') }}">All orders</a></li>
-                                <li><a href="{{ url('/users/'.Auth::user()->id.'/orders/pending') }}">Pending orders</a></li>
-                                <li><a href="{{ url('/users/'.Auth::user()->id.'/orders/completed') }}">Completed orders</a></li>
+                                <li><a href="{{ url('/users/'.Auth::user()->id.'/orders') }}">All</a></li>
+                                <li><a href="{{ url('/users/'.Auth::user()->id.'/orders/pending') }}">Pending</a></li>
+                                <li><a href="{{ url('/users/'.Auth::user()->id.'/orders/preparingToSend') }}">Preparing to send</a></li>
+                                <li><a href="{{ url('/users/'.Auth::user()->id.'/orders/waitingForPayment') }}">Waiting for payment</a></li>
+                                <li><a href="{{ url('/users/'.Auth::user()->id.'/orders/send') }}">Send</a></li>
+                                <li><a href="{{ url('/users/'.Auth::user()->id.'/orders/completed') }}">Completed</a></li>
                             </ul>
                         </div>
                     </div>
@@ -31,11 +34,22 @@
                                         <span><strong>Order number: </strong></span> <span class="label label-info">#{{ $order->id }}</span>
                                         <span><strong>Date: </strong></span>{{ $order->created_at }}
                                         <br>
-                                        <a id="order_{{$order->id}}" href="#" class="orders"><small>See order detail</small></a>
+                                        <div class="pull-right"><small>status changed at: </small>{{ $order->updated_at }}</div>
+                                        <a id="order_{{$order->id}}" href="#" class="orders"><small>See order details</small></a>
 
                                         {{--Hidden content - order details--}}
 
                                         <div id="order_details_{{$order->id}}" style="margin-top: 15px" hidden>
+                                            <strong><span class="glyphicon glyphicon-envelope"></span>E-mail: </strong>{{ $order->email }}
+                                            <br>
+                                            <strong><span class="glyphicon glyphicon-user"></span>Full name: </strong>{{ $order->first_name }} {{ $order->last_name }}
+                                            <br>
+                                            <strong><span class="glyphicon glyphicon-map-marker"></span>Street and postal code: </strong>{{ $order->street }}, {{ $order->postal_code }}
+                                            <br>
+                                            <strong><span class="glyphicon glyphicon-globe"></span>City and country: </strong>{{ $order->city }}, {{ $order->country }}
+                                            <br>
+                                            <strong><span class="glyphicon glyphicon-phone-alt"></span>Contact number: </strong>{{ $order->phone_number }}
+                                            <hr>
                                             <strong><span class="glyphicon glyphicon-plane"></span>Delivery method: </strong>{{ $order->delivery->name }}
                                             <br>
                                             <strong><span class="glyphicon glyphicon-usd"></span>Price for delivery: </strong>${{ $order->delivery->price }}
@@ -84,11 +98,7 @@
                                                 </table>
                                             </div>
                                         </div>
-
                                     </div>
-                                    {{--<div class="col-md-12">--}}
-                                        {{--order made on: date by <a href="#">User </a>--}}
-                                    {{--</div>--}}
                                 </div>
                             </div>
                         </div>
@@ -105,7 +115,8 @@
 
         $(function () {
 
-            $('.orders').on('click', function () {
+            $('.orders').on('click', function (e) {
+                e.preventDefault();
 
                 var order_id = $(this).attr('id');
                 var id = order_id.split('_')[1];

@@ -17,6 +17,14 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->float('total_paid')->unsigned();
             $table->string('status');
+            $table->string('email');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('street');
+            $table->string('postal_code');
+            $table->string('city');
+            $table->string('country');
+            $table->string('phone_number');
             $table->timestamps();
 
             $table->integer('user_id')->index()->unsigned()->nullable();

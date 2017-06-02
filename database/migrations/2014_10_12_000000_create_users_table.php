@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('country')->nullable();
             $table->string('phone_number')->nullable();
             $table->float('discount')->unsigned()->default('20');
+            $table->boolean('admin')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });
