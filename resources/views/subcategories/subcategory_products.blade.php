@@ -92,6 +92,7 @@
             $('.subcategory_links').on('click', function () {
 
                 var id = $(this).attr('id');
+                console.log("Dupa tam : " + id);
 
                 localStorage.setItem('active_link', id);
                 localStorage.removeItem('sort_id');

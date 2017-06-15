@@ -13,8 +13,8 @@ class SubcategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $subcategoryNamesToAttack = ['swords', 'axes', 'katanas'];
-        $subcategoryNamesToDefend = ['armours', 'helmets', 'shields'];
+        $subcategoryNamesToAttack = ['swords', 'daggers'];
+        $subcategoryNamesToDefend = ['armors', 'helmets', 'shields'];
 
         $categories = Category::all();
 

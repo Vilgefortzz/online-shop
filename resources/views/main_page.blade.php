@@ -32,7 +32,7 @@
         @foreach($categories as $category)
             <ul id="sub_cat_{{$category->id}}" class="sub_cat_menu" hidden>
                 @foreach($category->subcategories as $subcategory)
-                    <li id="sub_link_{{$subcategory->id}}"><a href="{{ url('/subcategories/'.$subcategory->id.'/products') }}"><b>{{$subcategory->name}}</b></a></li>
+                    <li id="sub_link_{{$subcategory->id}}" class="sub_cat_li"><a href="{{ url('/subcategories/'.$subcategory->id.'/products') }}"><b>{{$subcategory->name}}</b></a></li>
                 @endforeach
             </ul>
         @endforeach
@@ -130,9 +130,9 @@
                 $('#sub_cat_' + id).fadeIn();
             });
 
-            $('.sub_cat_menu').on('click', function () {
+            $('.sub_cat_li').on('click', function () {
 
-                var id = $(this).find('li').attr('id');
+                var id = $(this).attr('id');
                 localStorage.setItem('active_link', id);
             });
 
