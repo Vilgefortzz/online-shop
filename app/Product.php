@@ -25,4 +25,9 @@ class Product extends Model
     {
         return $this->belongsToMany('App\Image', 'products_images');
     }
+
+    public function ratings()
+    {
+        return $this->hasMany('App\Rating');
+    }
 }

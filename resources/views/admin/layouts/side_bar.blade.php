@@ -19,7 +19,7 @@
                             <div id="dropdown-1" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <ul class="nav navbar-nav">
-                                        <li><a href="{{ url('/admin/products') }}">All products ( show, edit, delete )</a></li>
+                                        <li><a href="{{ url('/admin/products') }}">All products ( show, edit, delete, change quantity )</a></li>
                                         <li><a href="#">Add product</a></li>
                                     </ul>
                                 </div>

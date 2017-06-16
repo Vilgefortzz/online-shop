@@ -76,6 +76,11 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'admin', 'prefix'=>'admin'
      */
     Route::put('/orders/{order}/update/status', 'OrderController@updateStatus');
 
+    /**
+     * Change quantity of products
+     */
+    Route::put('/products/{product}/update/quantity', 'ProductController@changeQuantity');
+
 });
 
 

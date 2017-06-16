@@ -13,4 +13,14 @@ class ProductController extends Controller
         $products = Product::paginate(5);
         return view('admin.products.products', compact('products'));
     }
+
+    public function changeQuantity(Product $product, Request $request){
+
+        if ($request->quantity >= 0 && $request->quantity <= 100){
+
+            $product->quantity = $request->quantity;
+            $product->save();
+        }
+        return back();
+    }
 }

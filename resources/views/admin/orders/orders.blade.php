@@ -118,6 +118,11 @@
 
         $(document).ready(function() {
 
+            $('.navbar-toggle-sidebar').click(function () {
+                $('.navbar-nav').toggleClass('slide-in');
+                $('.side-body').toggleClass('body-slide-in');
+            });
+
             $('.order_status').on('change', function() {
 
                 var order_id = $(this).attr('id');
@@ -135,11 +140,6 @@
 
                 $('#order_details_' + id).slideDown();
             });
-
-            $('.give_review').on('click', function () {
-
-                localStorage.setItem('animate', 'animate');
-            })
         });
 
     </script>
