@@ -15,7 +15,7 @@ class CreateRatingsTable extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->increments('id');
-            $table->float('rating')->default(0.0)->unsigned();
+            $table->float('rating')->unsigned()->nullable();
             $table->timestamps();
 
             $table->integer('user_id')->index()->unsigned();
@@ -24,6 +24,10 @@ class CreateRatingsTable extends Migration
 
             $table->integer('product_id')->index()->unsigned();
             $table->foreign('product_id')->references('id')->on('products')
+                ->onDelete('cascade');
+
+            $table->integer('review_id')->index()->unsigned();
+            $table->foreign('review_id')->references('id')->on('reviews')
                 ->onDelete('cascade');
         });
     }

@@ -9,6 +9,11 @@
                     <div class="panel-heading panel-heading-fix">
                         <img src="{{$product->path_to_thumbnail}}" width="80" height="80" style="float: left">
                         <h1 style="margin-left: 90px"><b>{{$product->name}}</b></h1>
+
+                        {{-- Rating - stars --}}
+                            <input id="rating_star_1" name="rating_star_show_1"
+                                   value="{{$product->average_rating}}" class="rating-star-show rating-loading" data-size="sm">
+
                     </div>
 
                     <div class="panel-body">
@@ -133,7 +138,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-5">
+                                        <div class="col-sm-6">
                                             <div class="panel panel-review panel-default">
                                                 <div class="panel-heading panel-heading-fix panel-heading-review">
                                                     <label for="review_text_area"><span class="glyphicon glyphicon-pencil"></span>Write your review below</label>
@@ -152,6 +157,13 @@
                                                                 <strong>{{ $errors->first('review') }}</strong>
                                                             </span>
                                                             @endif
+                                                        </div>
+                                                        <hr>
+                                                        <div class="form-group">
+                                                            <label for="input_rating_star" class="control-label">Rate this product</label>
+                                                            <input id="input_rating_star" name="stars"
+                                                                   class="rating-star-give rating-loading"
+                                                                   value="2.5" data-min="0" data-max="5" data-step="0.1" data-size="xs">
                                                         </div>
                                                         <button class="btn btn-info" type="submit">Post</button>
                                                     </form>
@@ -196,7 +208,11 @@
     {{-- jscroll --}}
     <script src="{{ asset('js/jscroll/jquery.jscroll.min.js') }}"></script>
 
+    {{-- smoothproducts in gallery --}}
     <script src="{{ asset('js/smoothproducts/smoothproducts.min.js') }}"></script>
+
+    {{-- star rating --}}
+    <script src="{{ asset('js/star-rating/star-rating.min.js') }}"></script>
 
     <script type="text/javascript">
 
@@ -262,6 +278,17 @@
 
                 localStorage.clear();
             }
+        });
+
+        // Ratings stuff
+        $('.rating-star-show').rating({
+            displayOnly: true,
+            step: 0.1
+        });
+
+        $('.rating-star-give').rating({
+            hoverOnClear: false,
+            containerClass: 'is-star'
         });
 
     </script>

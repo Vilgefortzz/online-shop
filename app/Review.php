@@ -15,4 +15,9 @@ class Review extends Model
     {
         return $this->belongsTo('App\Product');
     }
+
+    public function rating()
+    {
+        return $this->hasOne('App\Rating');
+    }
 }

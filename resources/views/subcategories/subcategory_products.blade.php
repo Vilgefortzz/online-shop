@@ -85,6 +85,9 @@
     {{-- Change view (grid, list)--}}
     <script src="{{ asset('js/change_view.js') }}"></script>
 
+    {{-- star rating --}}
+    <script src="{{ asset('js/star-rating/star-rating.min.js') }}"></script>
+
     <script type="text/javascript">
 
         $(function () {

@@ -20,6 +20,9 @@ class CreateProductsTable extends Migration
             $table->string('path_to_thumbnail')->default('/images/missing.png');
             $table->float('price')->unsigned();
             $table->integer('quantity')->unsigned()->nullable();
+            $table->integer('number_of_ratings')->unsigned()->nullable();
+            $table->float('ratings_sum')->unsigned()->nullable();
+            $table->float('average_rating')->unsigned()->nullable();
             $table->boolean('recommended')->default(false);
             $table->timestamps();
 

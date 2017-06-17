@@ -16,6 +16,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/smoothproducts/smoothproducts.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/star-rating/star-rating.min.css') }}" media="all" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
