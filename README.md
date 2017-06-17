@@ -1,40 +1,73 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+<h1 align="center">E-shop Knights & Warriors</h1>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+- add/remove products from cart
+- set number of items to buy
+- buy products
+- see gallery of images
+- place an order
+- give reviews and ratings
+- see your orders history
+- live search of products
+- admin panel to manage ( change status, change quantity of products on stock)
 
-## About Laravel
+## Screens from e-shop
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+Main Page with two categories, navigation bar and footer
+![alt text](screens/main_page.png "Screen 1")
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Footer with terms and conditions, faq, about us, social media panel and newsletter subscription
+![alt text](screens/footer.png "Screen 2")
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+Subcategories
+![alt text](screens/subcategories.png "Screen 3")
 
-## Learning Laravel
+Registration panel
+![alt text](screens/register.png "Screen 4")
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+Login panel
+![alt text](screens/login.png "Screen 5")
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+Products displayed in grid system
+![alt text](screens/products-grid.png "Screen 6")
 
-## Contributing
+Products displayed in list system
+![alt text](screens/products-list.png "Screen 7")
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+Sort products by price - ascending or descending
+![alt text](screens/sort-asc.png "Screen 8")
 
-## Security Vulnerabilities
+Product was added to cart - dynamically
+![alt text](screens/added_to_cart.png "Screen 9")
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+Details of products - info and gallery
+![alt text](screens/product_details_info.png "Screen 10")
 
-## License
+Gallery of images for product - thumbnails
+![alt text](screens/gallery_thumbnails.png "Screen 11")
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+Gallery of images for product - zoom's effect on thumbnail
+![alt text](screens/gallery_zoom.png "Screen 12")
+
+Products in cart - dynamically changes in number of items, total prices and prices for products
+![alt text](screens/cart_view.png "Screen 13")
+
+Place an order - fill data manually or download data from personal information from user
+![alt text](screens/place_an_order_data.png "Screen 14")
+
+Place an order - choose delivery method and payment ( highlighted images of chosen methods )
+![alt text](screens/delivery_payment.png "Screen 15")
+
+Place an order - final checkbox to confirm data and accept terms and conditions and click the button ( disabled on the beggining - after check the checkbox button is available to click )
+![alt text](screens/place_an_order_final.png "Screen 16")
+
+See orders history - details, status ( is changed via admin panel ), date, ordered products. Filtration by status is available
+![alt text](screens/orders.png "Screen 17")
+
+Giving reviews and ratings after product bought, only once for user for this product 
+![alt text](screens/give_review.png "Screen 18")
+
+See reviews and ratings for products given by all users
+![alt text](screens/reviews.png "Screen 19")
+
+Live search of products
+![alt text](screens/products-list.png "Screen 20")
