@@ -51,7 +51,7 @@
                                         <label for="order_status_{{$order->id}}" class="control-label">Change status<span class="glyphicon glyphicon-triangle-top"></span></label>
                                     </form>
                                 </div>
-                                <span><strong>Made by: </strong></span>{{ $order->user->username }}
+                                <span><strong>Made by: </strong></span>{{ $order->first_name }} {{ $order->last_name }}
                                 <br>
                                 <a id="order_{{$order->id}}" href="#" class="orders"><small>See order details</small></a>
 
@@ -74,7 +74,9 @@
                                     <br>
                                     <strong><span class="glyphicon glyphicon-credit-card"></span>Payment method: </strong>{{ $order->payment->name }}
                                     <br>
-                                    <strong><span class="glyphicon glyphicon-gift"></span>Discount for having account: </strong>${{ $order->user->discount }}
+                                    @if($order->user)
+                                        <strong><span class="glyphicon glyphicon-gift"></span>Discount for having account: </strong>${{ $order->user->discount }}
+                                    @endif
                                     <hr>
                                     <strong><span class="glyphicon glyphicon-usd"></span>Total paid: </strong>${{number_format($order->total_paid, 2, '.', '')}}
                                     <br><br>

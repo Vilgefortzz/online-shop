@@ -23,7 +23,6 @@ class CreateProductsTable extends Migration
             $table->integer('number_of_ratings')->unsigned()->nullable();
             $table->float('ratings_sum')->unsigned()->nullable();
             $table->float('average_rating')->unsigned()->nullable();
-            $table->boolean('recommended')->default(false);
             $table->timestamps();
 
             $table->integer('subcategory_id')->index()->unsigned();

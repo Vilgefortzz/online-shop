@@ -16,9 +16,10 @@ Route::get('/', function () {
     $categories = \App\Category::all();
 
     /*
-     * Recommended products - collection
+     * Recommended products - sorted by average rating descending and taken 6 best products
      */
-    $recommendedProducts = \App\Product::all()->where('recommended', true);
+    $products = \App\Product::orderBy('average_rating', 'desc')->get();
+    $recommendedProducts = $products->take(6);
 
     return view('main_page', compact('categories', 'recommendedProducts'));
 });
